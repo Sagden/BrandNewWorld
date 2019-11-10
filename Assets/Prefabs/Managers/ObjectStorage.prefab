@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6763592266468197171
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6763592266468197169}
+  - component: {fileID: 6763592266468197168}
+  - component: {fileID: 6763592266468197182}
+  - component: {fileID: 6763592266468197183}
+  m_Layer: 0
+  m_Name: ObjectStorage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6763592266468197169
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6763592266468197171}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1.8323072, y: -2.790548, z: 6.1364746}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6763592266468197168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6763592266468197171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e94155b1a8cbbc149871d3050c562d78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  slider: {fileID: 0}
+  sliderScript: {fileID: 0}
+  buttonPlay: {fileID: 0}
+  playPauseScript: {fileID: 0}
+  buttonStop: {fileID: 0}
+  stopScript: {fileID: 0}
+  startFloor: {fileID: 0}
+  startFloorScript: {fileID: 0}
+  finishLevelUI: {fileID: 0}
+  playArea: {fileID: 0}
+  gameAreaScrolling: {fileID: 0}
+  firstPlayerObj: {fileID: 0}
+  playerWalking: {fileID: 0}
+  playerReactionOnFloor: {fileID: 0}
+  playerSpriteDrawing: {fileID: 0}
+  movingBlock: {fileID: 0}
+  movingBlockScript: {fileID: 0}
+  behavior: {fileID: 0}
+  playButtonSprite: {fileID: 21300000, guid: bb493891d02a590409393ff6cfd71f2b, type: 3}
+  pauseButtonSprite: {fileID: 21300000, guid: 24d7744df3fb46845abeb188a3b63bc7, type: 3}
+--- !u!114 &6763592266468197182
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6763592266468197171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82cbcd378660c534594135e771b93805, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstPlayerOnFinishFloor:
+    m_PersistentCalls:
+      m_Calls: []
+  speedSliderIsChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  walkingFinished:
+    m_PersistentCalls:
+      m_Calls: []
+  startMovingEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  stopButtonClick:
+    m_PersistentCalls:
+      m_Calls: []
+  firstPlayerIsCreate:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &6763592266468197183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6763592266468197171}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6f975ede086ad448a372f06cc30b722, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
