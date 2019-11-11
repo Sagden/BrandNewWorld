@@ -12,24 +12,25 @@ public class AllObjectList : MonoBehaviour
     public GameObject slider;
     public SliderScript sliderScript;
     
-    public GameObject buttonPlay;
+    public GameObject buttonPlayBlue;
+    public GameObject buttonPlayRed;
     public PlayPauseScript playPauseScript;
 
     public GameObject buttonStop;
     public StopScript stopScript;
 
-    public GameObject startFloor;
-    public StartFloorScript startFloorScript;
+    public GameObject firstRobotStartFloor;
+    public GameObject secondRobotStartFloor;
 
     public GameObject finishLevelUI;
 
     public GameObject playArea;
     public GameAreaScrolling gameAreaScrolling;
 
-    public GameObject firstPlayerObj; //создается чуть позже
-    public PlayerWalking playerWalking;
-    public PlayerReactionOnFloor playerReactionOnFloor;
-    public PlayerSpriteDrawing playerSpriteDrawing;
+    public GameObject bluePlayerObj; //создается чуть позже
+    public GameObject redPlayerObj; //создается чуть позже
+    public GameObject redPlayerObj2;
+
 
     public GameObject movingBlockBlue;
     public MovingBlockScript movingBlockScript;
@@ -54,12 +55,14 @@ public class AllObjectList : MonoBehaviour
         slider = GameObject.Find("Slider");
         actionBlock = GameObject.Find("ActionBlock");
         playArea = GameObject.Find("PlayArea");
-        buttonPlay = GameObject.Find("ButtonPlay");
+        buttonPlayBlue = GameObject.Find("ButtonPlayBlue");
+        buttonPlayRed = GameObject.Find("ButtonPlayRed");
         buttonStop = GameObject.Find("ButtonStop");
         finishLevelUI = GameObject.Find("FinishLevelUI");
         behavior = GameObject.Find("Behavior");
         movingBlockBlue = GameObject.Find("MovingBlockBlue");
-        startFloor = GameObject.Find("StartFloor");
+        firstRobotStartFloor = GameObject.Find("FirstRobotStartFloor");
+        secondRobotStartFloor = GameObject.Find("SecondRobotStartFloor");
     
 
 
@@ -67,9 +70,7 @@ public class AllObjectList : MonoBehaviour
         createArrow = actionBlock.GetComponent<CreateArrow>();
         sliderScript = slider.GetComponent<SliderScript>();
         gameAreaScrolling = playArea.GetComponent<GameAreaScrolling>();
-        playPauseScript = buttonPlay.GetComponent<PlayPauseScript>();
         stopScript = buttonStop.GetComponent<StopScript>();
-        startFloorScript = startFloor.GetComponent<StartFloorScript>();
         movingBlockScript = movingBlockBlue.GetComponent<MovingBlockScript>();
         movingBlockScrolling = movingBlockBlue.GetComponent<MovingBlockScrolling>();
     }

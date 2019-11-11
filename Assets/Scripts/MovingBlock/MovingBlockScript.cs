@@ -10,6 +10,7 @@ public class MovingBlockScript : MovingBlockParent
     public List<GameObject> showArrows;
     public GameObject testArrow;
     public Animation _animation;
+    public GameObject playObj;
     private string myName;
     private float myOffset;
 
@@ -19,10 +20,17 @@ public class MovingBlockScript : MovingBlockParent
         _animation = gameObject.GetComponent<Animation>();
 
         if (myName == "MovingBlockBlue")
+        {
             myOffset = -3.18f;
+            playObj = GameObject.Find("ButtonPlayBlue");
+        }
         else
         if (myName == "MovingBlockRed")
+        {
             myOffset = -2.2f;
+            playObj = GameObject.Find("ButtonPlayRed");
+        }
+
     }
     void Start()
     {

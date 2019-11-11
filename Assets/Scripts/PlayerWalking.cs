@@ -10,11 +10,26 @@ public class PlayerWalking : MonoBehaviour
 
     public int currentStep = 0;
     public bool pause = false;
+    public GameObject iam;
 
 
     void Start()
     {
+        InitPlayer();
+
         _animation = GetComponent<Animation>();
+    }
+    void InitPlayer()
+    {
+        if (gameObject.name == "PlayerBlue(Clone)")
+        {
+            iam = AllObjectList.Instance.bluePlayerObj;
+        }
+        else
+        if (gameObject.name == "PlayerRed(Clone)")
+        {
+            iam = AllObjectList.Instance.redPlayerObj;
+        }
     }
 
     public void StartMoving()
@@ -44,7 +59,7 @@ public class PlayerWalking : MonoBehaviour
             _animation[_anim.name].speed = AllGlobalVariable.overallSpeed / 1f;
             _animation.Play(_anim.name);
 
-            AllObjectList.Instance.playerSpriteDrawing.SetSprite(currentStep);
+            iam.GetComponent<PlayerSpriteDrawing>().SetSprite(currentStep);
             
             Invoke("StepTime", 1.1f / AllGlobalVariable.overallSpeed);
         }
@@ -58,7 +73,7 @@ public class PlayerWalking : MonoBehaviour
 
     void StepTime()
     {
-        AllObjectList.Instance.playerReactionOnFloor.CheckFloorType();
+        iam.GetComponent<PlayerReactionOnFloor>().CheckFloorType();
 
         if (!pause)
         {

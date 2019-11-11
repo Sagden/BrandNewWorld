@@ -40,7 +40,7 @@ public class ArrowScript : ActionBlockAbstract
 
     public override void AddArrowToMovingBlock()
     {
-        if ((CollisionMouseWith("MovingBlock")) && AllObjectList.Instance.playPauseScript.status == "Play") // || (canCreateArrowAtClick == true)
+        if ((CollisionMouseWith("MovingBlock")) && (CollisionMouseWith("MovingBlock").GetComponent<MovingBlockScript>().playObj.GetComponent<PlayPauseScript>().status == "Play")) //AllObjectList.Instance.playPauseScript.status == "Play") // || (canCreateArrowAtClick == true)
             {
                 CollisionMouseWith("MovingBlock").GetComponent<MovingBlockScript>().AddArrow(selectArrow);
             }

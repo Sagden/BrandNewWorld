@@ -15,7 +15,7 @@ public class MovingBlockScrolling : MovingBlockScrollingParent
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && AllObjectList.Instance.playerReactionOnFloor.WhatUnderMe(myName, Camera.main.ScreenToWorldPoint(Input.mousePosition)))
+        if (Input.GetMouseButtonDown(0) && AllObjectList.Instance.bluePlayerObj.GetComponent<PlayerReactionOnFloor>().WhatUnderMe(myName, Camera.main.ScreenToWorldPoint(Input.mousePosition)))
         {
             mouseCoordinateStart = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             movingBlockCoordinateXStart = gameObject.GetComponent<BehaviorLikeUI>().coordinateRelativeCamera.x;

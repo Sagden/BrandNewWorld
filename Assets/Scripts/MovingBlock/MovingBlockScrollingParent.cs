@@ -16,9 +16,9 @@ public abstract class MovingBlockScrollingParent : MonoBehaviour
     {
         difference = 0;
 
-        if (arrow.transform.position.x+0.6f > AllObjectList.Instance.buttonPlay.transform.position.x)
+        if (arrow.transform.position.x+0.6f > AllObjectList.Instance.buttonPlayBlue.transform.position.x)
         {
-            var offset = AllObjectList.Instance.buttonPlay.transform.position.x - (arrow.transform.position.x+0.6f);
+            var offset = AllObjectList.Instance.buttonPlayBlue.transform.position.x - (arrow.transform.position.x+0.6f);
             Debug.Log(offset);
             gameObject.GetComponent<BehaviorLikeUI>().coordinateRelativeCamera.x += offset;
         }

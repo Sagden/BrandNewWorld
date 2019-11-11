@@ -9,10 +9,12 @@ public class ArrowTestScript : MonoBehaviour
     [SerializeField] private bool canDelete = true;
     //private bool playerIsStop = true;
     public SpriteRenderer spriteRenderer;
+    public GameObject currentPlayer;
 
 
     void Start()
     {
+
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         AllEventList.Instance.startMovingEvent.AddListener(ChangeColor);
@@ -50,7 +52,8 @@ public class ArrowTestScript : MonoBehaviour
     void ChangeColor()
     {
         spriteRenderer.color = new Color32(110,110,110,255);
-        AllObjectList.Instance.playerWalking.currentBlock.GetComponent<SpriteRenderer>().color = new Color32(255,255,255,255);
+
+        //CollisionMouseWith("") .playerWalking.currentBlock.GetComponent<SpriteRenderer>().color = new Color32(255,255,255,255);
     }
 
     void ChangeColorOnWhite()

@@ -19,5 +19,5 @@ public class AllEventList : MonoBehaviour
     public UnityEvent walkingFinished = new UnityEvent(); // Когда прошел все команды
     public UnityEvent startMovingEvent = new UnityEvent(); //ГГ сменил команду из списка (сменил направление или начал идти)
     public UnityEvent stopButtonClick = new UnityEvent(); // Была нажата кнопка стоп
-    public UnityEvent firstPlayerIsCreate = new UnityEvent(); // Игрок 1 был созда или пересоздан
+    //public UnityEvent firstPlayerIsCreate = new UnityEvent(); // Игрок 1 был созда или пересоздан
 }

@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -3806688100078922798}
   - component: {fileID: 4532268956870384005}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PlayerRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 218a811619ea0a5489c2d499d2883ecb, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.5424528, b: 0.5424528, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -98,15 +98,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70dd3f32656f74144b7143d164e89f43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _movingBlock: {fileID: 0}
   currentBlock: {fileID: 0}
   _animation: {fileID: 0}
-  walkingFinished:
-    m_PersistentCalls:
-      m_Calls: []
   currentStep: 0
-  _moveSpeed: 1
   pause: 0
+  iam: {fileID: 0}
 --- !u!114 &2266950190993679715
 MonoBehaviour:
   m_ObjectHideFlags: 0

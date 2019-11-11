@@ -3,28 +3,32 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class StartFloorScript : MonoBehaviour
+public class StartFloorScript : StartFloorParent
 {
     public GameObject player;
     public GameObject playerParent;
-    public Event playerBorn;
 
-    void Start()
+    void Awake()
     {
         InitPlayer();
     }
 
 
 
-    public void InitPlayer()
+    public override void InitPlayer()
     {
-        var obj = Instantiate(playerParent, gameObject.transform.position, Quaternion.identity);
-        AllObjectList.Instance.firstPlayerObj = Instantiate(player, new Vector3(obj.transform.position.x, obj.transform.position.y, -1), Quaternion.identity, obj.transform);
-        AllObjectList.Instance.playerWalking = AllObjectList.Instance.firstPlayerObj.GetComponent<PlayerWalking>();
-        AllObjectList.Instance.playerReactionOnFloor = AllObjectList.Instance.firstPlayerObj.GetComponent<PlayerReactionOnFloor>();
-        AllObjectList.Instance.playerSpriteDrawing = AllObjectList.Instance.firstPlayerObj.GetComponent<PlayerSpriteDrawing>();
+        var objParrent = Instantiate(playerParent, gameObject.transform.position, Quaternion.identity);
+        var obj = Instantiate(player, new Vector3(objParrent.transform.position.x, objParrent.transform.position.y, -1), Quaternion.identity, objParrent.transform);
 
-        AllEventList.Instance.firstPlayerIsCreate.Invoke();
-        //AllObjectList.Instance.playPauseScript.PlayerInit();
+        if (player.name == "PlayerBlue")
+        {
+            AllObjectList.Instance.bluePlayerObj = obj;
+        }
+        else
+        if (player.name == "PlayerRed")
+        {
+            AllObjectList.Instance.redPlayerObj = obj;
+        }
+
     }
 }
