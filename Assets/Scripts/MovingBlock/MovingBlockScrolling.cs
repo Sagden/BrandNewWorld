@@ -2,18 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingBlockScrolling : BehaviorLikeUI
+public class MovingBlockScrolling : MovingBlockScrollingParent
 {
-    private Vector3 mouseCoordinateStart;
-    [SerializeField] private float movingBlockCoordinateXStart;
-    [SerializeField] private Vector3 coordinateDifference;
-    [SerializeField] private float difference;
-    [SerializeField] private bool canScrolling = false;
+    private string myName;
+    private bool canScrolling = false;
 
+    void Awake()
+    {
+        myName = gameObject.name;
+        Debug.Log(myName);
+    }
 
     void Update()
-    {   
-        if (Input.GetMouseButtonDown(0) && AllObjectList.Instance.playerReactionOnFloor.WhatUnderMe("MovingBlock", Camera.main.ScreenToWorldPoint(Input.mousePosition)))
+    {
+        if (Input.GetMouseButtonDown(0) && AllObjectList.Instance.playerReactionOnFloor.WhatUnderMe(myName, Camera.main.ScreenToWorldPoint(Input.mousePosition)))
         {
             mouseCoordinateStart = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             movingBlockCoordinateXStart = gameObject.GetComponent<BehaviorLikeUI>().coordinateRelativeCamera.x;
@@ -29,9 +31,9 @@ public class MovingBlockScrolling : BehaviorLikeUI
         }
     }
 
-    void Scrolling()
+    public override void Scrolling()
     {
-        if (canScrolling && AllObjectList.Instance.movingBlockScript.allArrows.Count != 0)
+        if (canScrolling && gameObject.GetComponent<MovingBlockScript>().allArrows.Count != 0)
         {           
             coordinateDifference = Camera.main.ScreenToWorldPoint(Input.mousePosition) - mouseCoordinateStart;
             
@@ -48,15 +50,5 @@ public class MovingBlockScrolling : BehaviorLikeUI
         }
     }
 
-    public void OffsetAddArrow(GameObject arrow)
-    {
-        difference = 0;
 
-        if (arrow.transform.position.x+0.6f > AllObjectList.Instance.buttonPlay.transform.position.x)
-        {
-            var offset = AllObjectList.Instance.buttonPlay.transform.position.x - (arrow.transform.position.x+0.6f);
-            Debug.Log(offset);
-            gameObject.GetComponent<BehaviorLikeUI>().coordinateRelativeCamera.x += offset;
-        }
-    }
 }

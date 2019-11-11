@@ -24,13 +24,13 @@ public abstract class ActionBlockAbstract : MonoBehaviour
     {
         banOnArrowDrag = true;
     }
-    public bool CollisionMouseWith(string objName)  //Смотрит все объекты под курсором, проверяет есть ли нужный
+    public GameObject CollisionMouseWith(string objName)  //Смотрит все объекты под курсором, проверяет есть ли нужный
     {
         foreach(Collider2D s in Physics2D.OverlapPointAll(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y))))
         {
-            if (s.name == objName)
-                return true;
+            if (s.tag == objName)
+                return s.gameObject;
         }
-        return false;
+        return null;
     }
 }

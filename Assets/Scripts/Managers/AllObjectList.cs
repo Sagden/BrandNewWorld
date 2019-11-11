@@ -31,7 +31,7 @@ public class AllObjectList : MonoBehaviour
     public PlayerReactionOnFloor playerReactionOnFloor;
     public PlayerSpriteDrawing playerSpriteDrawing;
 
-    public GameObject movingBlock;
+    public GameObject movingBlockBlue;
     public MovingBlockScript movingBlockScript;
     public MovingBlockScrolling movingBlockScrolling;
 
@@ -58,7 +58,7 @@ public class AllObjectList : MonoBehaviour
         buttonStop = GameObject.Find("ButtonStop");
         finishLevelUI = GameObject.Find("FinishLevelUI");
         behavior = GameObject.Find("Behavior");
-        movingBlock = GameObject.Find("MovingBlock");
+        movingBlockBlue = GameObject.Find("MovingBlockBlue");
         startFloor = GameObject.Find("StartFloor");
     
 
@@ -70,7 +70,7 @@ public class AllObjectList : MonoBehaviour
         playPauseScript = buttonPlay.GetComponent<PlayPauseScript>();
         stopScript = buttonStop.GetComponent<StopScript>();
         startFloorScript = startFloor.GetComponent<StartFloorScript>();
-        movingBlockScript = movingBlock.GetComponent<MovingBlockScript>();
-        movingBlockScrolling = movingBlock.GetComponent<MovingBlockScrolling>();
+        movingBlockScript = movingBlockBlue.GetComponent<MovingBlockScript>();
+        movingBlockScrolling = movingBlockBlue.GetComponent<MovingBlockScrolling>();
     }
 }

@@ -16,8 +16,8 @@ GameObject:
   - component: {fileID: 7721902423163282743}
   - component: {fileID: 7721902423163282740}
   m_Layer: 0
-  m_Name: MovingBlock
-  m_TagString: Untagged
+  m_Name: MovingBlockRed
+  m_TagString: MovingBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b3c6fe1dd2de1ca49a8a71b1630a7078, type: 3}
-  m_Color: {r: 0.47098613, g: 0.6348622, b: 0.6792453, a: 1}
+  m_Color: {r: 0.6784314, g: 0.47872624, b: 0.47058824, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
@@ -127,7 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c24049a20a74fbd4d8ac8357deedc7cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coordinateRelativeCamera: {x: 0, y: 0, z: 0}
+  mouseCoordinateStart: {x: 0, y: 0, z: 0}
   movingBlockCoordinateXStart: 0
   coordinateDifference: {x: 0, y: 0, z: 0}
   difference: 0

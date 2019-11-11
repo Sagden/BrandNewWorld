@@ -15,8 +15,6 @@ public class ArrowTestScript : MonoBehaviour
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        
-        
         AllEventList.Instance.startMovingEvent.AddListener(ChangeColor);
         AllEventList.Instance.walkingFinished.AddListener(ChangeColorOnWhite);
         AllEventList.Instance.stopButtonClick.AddListener(ChangeColorOnWhite);
@@ -24,21 +22,24 @@ public class ArrowTestScript : MonoBehaviour
 
     void OnMouseDown()
     {
-        Invoke("ChangeCanDeleteStatus", 0.3f);
+        Invoke("ChangeCanDeleteStatus", 0.2f);
     }
+
     void OnMouseUp()
     {
         if (canDelete)
         {
             if (!AllGlobalVariable.heroStartedWalking)
             {
-                AllObjectList.Instance.movingBlockScript.DeleteArrow(gameObject);
+                CollisionMouseWith("MovingBlock").GetComponent<MovingBlockScript>().DeleteArrow(gameObject);
             }
             else
             {
                 AllObjectList.Instance.stopScript.Shake();
             }
         }
+
+        canDelete = true;
     }
 
     void ChangeCanDeleteStatus()
@@ -70,5 +71,15 @@ public class ArrowTestScript : MonoBehaviour
     {
         direction = _dir;
         animate = _animation;
+    }
+
+    public GameObject CollisionMouseWith(string objName)  //Смотрит все объекты под курсором, проверяет есть ли нужный
+    {
+        foreach(Collider2D s in Physics2D.OverlapPointAll(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y))))
+        {
+            if (s.tag == objName)
+                return s.gameObject;
+        }
+        return null;
     }
 }

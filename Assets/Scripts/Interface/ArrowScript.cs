@@ -40,9 +40,9 @@ public class ArrowScript : ActionBlockAbstract
 
     public override void AddArrowToMovingBlock()
     {
-        if ((CollisionMouseWith("MovingBlock") || (canCreateArrowAtClick == true)) && AllObjectList.Instance.playPauseScript.status == "Play")
+        if ((CollisionMouseWith("MovingBlock")) && AllObjectList.Instance.playPauseScript.status == "Play") // || (canCreateArrowAtClick == true)
             {
-                AllObjectList.Instance.movingBlockScript.AddArrow(selectArrow);
+                CollisionMouseWith("MovingBlock").GetComponent<MovingBlockScript>().AddArrow(selectArrow);
             }
             
         Destroy(prefabObject);

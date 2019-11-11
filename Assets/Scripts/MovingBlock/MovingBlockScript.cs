@@ -4,20 +4,29 @@ using UnityEngine;
 using System;
 
 
-public class MovingBlockScript : MonoBehaviour
+public class MovingBlockScript : MovingBlockParent
 {
     public List<string> allArrows;
     public List<GameObject> showArrows;
     public GameObject testArrow;
     public Animation _animation;
+    private string myName;
+    private float myOffset;
 
-    void Start()
-    {
-        gameObject.GetComponent<BehaviorLikeUI>().coordinateRelativeCamera = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y-3.18f) - Camera.main.transform.position;
-    }
     void Awake()
     {
+        myName = gameObject.name;
         _animation = gameObject.GetComponent<Animation>();
+
+        if (myName == "MovingBlockBlue")
+            myOffset = -3.18f;
+        else
+        if (myName == "MovingBlockRed")
+            myOffset = -2.2f;
+    }
+    void Start()
+    {
+            gameObject.GetComponent<BehaviorLikeUI>().coordinateRelativeCamera = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y+myOffset) - Camera.main.transform.position; 
     }
 
 
@@ -66,7 +75,7 @@ public class MovingBlockScript : MonoBehaviour
         for(int i = 0; i < allArrows.Count; i++)
         {
             var offset = i * 0.7f;
-            var obj = Instantiate(testArrow, new Vector3(transform.position.x-2+offset, Camera.main.transform.position.y-3.18f, -1), Quaternion.identity, gameObject.transform);
+            var obj = Instantiate(testArrow, new Vector3(transform.position.x-2+offset, Camera.main.transform.position.y+myOffset, -1), Quaternion.identity, gameObject.transform);
             var objScript = obj.GetComponent<ArrowTestScript>();
 
             if (i+1 == allArrows.Count) //перемещение камеры в movingblock к последнему элементу
