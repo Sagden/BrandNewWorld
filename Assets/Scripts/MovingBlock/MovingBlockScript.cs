@@ -11,10 +11,11 @@ public class MovingBlockScript : MovingBlockParent
     public GameObject testArrow;
     public Animation _animation;
     public GameObject playObj;
-    private string myName;
-    private float myOffset;
+    public GameObject myMovingBlock;
+    public string myName;
+    public float myOffset;
 
-    void Awake()
+    void Start()
     {
         myName = gameObject.name;
         _animation = gameObject.GetComponent<Animation>();
@@ -22,20 +23,21 @@ public class MovingBlockScript : MovingBlockParent
         if (myName == "MovingBlockBlue")
         {
             myOffset = -3.18f;
-            playObj = GameObject.Find("ButtonPlayBlue");
+            playObj = AllObjectList.Instance.buttonPlayBlue;
+            myMovingBlock = AllObjectList.Instance.movingBlockBlue;
         }
         else
         if (myName == "MovingBlockRed")
         {
             myOffset = -2.2f;
-            playObj = GameObject.Find("ButtonPlayRed");
+            playObj = AllObjectList.Instance.buttonPlayRed;
+            myMovingBlock = AllObjectList.Instance.movingBlockRed;
         }
+        gameObject.GetComponent<BehaviorLikeUI>().coordinateRelativeCamera = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y+myOffset) - Camera.main.transform.position; 
 
     }
-    void Start()
-    {
-            gameObject.GetComponent<BehaviorLikeUI>().coordinateRelativeCamera = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y+myOffset) - Camera.main.transform.position; 
-    }
+    //void Start()
+
 
 
     public void AddArrow(GameObject arrow)
@@ -87,7 +89,7 @@ public class MovingBlockScript : MovingBlockParent
             var objScript = obj.GetComponent<ArrowTestScript>();
 
             if (i+1 == allArrows.Count) //перемещение камеры в movingblock к последнему элементу
-                AllObjectList.Instance.movingBlockScrolling.OffsetAddArrow(obj);
+                myMovingBlock.GetComponent<MovingBlockScrolling>().OffsetAddArrow(obj);
 
             switch (allArrows[i])
             {

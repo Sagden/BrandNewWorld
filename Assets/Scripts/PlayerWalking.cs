@@ -11,6 +11,9 @@ public class PlayerWalking : MonoBehaviour
     public int currentStep = 0;
     public bool pause = false;
     public GameObject iam;
+    public GameObject myMovingBlock;
+    public UnityEvent myEventStart;
+    public UnityEvent myEventFinish;
 
 
     void Start()
@@ -24,28 +27,34 @@ public class PlayerWalking : MonoBehaviour
         if (gameObject.name == "PlayerBlue(Clone)")
         {
             iam = AllObjectList.Instance.bluePlayerObj;
+            myMovingBlock = AllObjectList.Instance.movingBlockBlue;
+            myEventStart = AllEventList.Instance.startMovingEventBlue;
+            myEventFinish = AllEventList.Instance.walkingFinishedBlue;
         }
         else
         if (gameObject.name == "PlayerRed(Clone)")
         {
             iam = AllObjectList.Instance.redPlayerObj;
+            myMovingBlock = AllObjectList.Instance.movingBlockRed;
+            myEventStart = AllEventList.Instance.startMovingEventRed;
+            myEventFinish = AllEventList.Instance.walkingFinishedRed;
         }
-    }
+    } 
 
     public void StartMoving()
     {
         if (IsListHaveBlock()) // Проверка не пустой ли список
         {
-            currentBlock = AllObjectList.Instance.movingBlockScript.showArrows[currentStep];
+            currentBlock = myMovingBlock.GetComponent<MovingBlockScript>().showArrows[currentStep];
 
-            AllEventList.Instance.startMovingEvent.Invoke();
+            myEventStart.Invoke();
             
             Invoke("StepTime", 1.1f / AllGlobalVariable.overallSpeed);
         }
         else
         {
             Debug.Log("Команды кончились!");
-            AllEventList.Instance.walkingFinished.Invoke();
+            myEventFinish.Invoke();
         }
     }
 
@@ -95,7 +104,7 @@ public class PlayerWalking : MonoBehaviour
 
     bool IsListHaveBlock()
     {
-        if (AllObjectList.Instance.movingBlockScript.showArrows.Count > currentStep)
+        if (myMovingBlock.GetComponent<MovingBlockScript>().showArrows.Count > currentStep)
             return true;
         else
             return false;

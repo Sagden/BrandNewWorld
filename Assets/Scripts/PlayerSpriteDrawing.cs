@@ -17,7 +17,7 @@ public class PlayerSpriteDrawing : MonoBehaviour
     }
     public void SetSprite(int currentStepIndex)
     {
-        /*switch (AllObjectList.Instance.movingBlockScript.allArrows[currentStepIndex])
+        switch (gameObject.GetComponent<PlayerWalking>().myMovingBlock.GetComponent<MovingBlockScript>().allArrows[currentStepIndex])
             {
                 case "ArrowRight(Clone)": 
                     spriteRenderer.sprite = spriteRight;
@@ -34,6 +34,6 @@ public class PlayerSpriteDrawing : MonoBehaviour
                 case "ArrowLeft(Clone)": 
                     spriteRenderer.sprite = spriteLeft;
                 break;
-            }*/
+            }
     }
 }

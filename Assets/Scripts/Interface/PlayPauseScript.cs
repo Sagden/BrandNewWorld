@@ -20,8 +20,8 @@ public class PlayPauseScript : MonoBehaviour
 
 
         button.onClick.AddListener(ClickOnButton);
-        AllEventList.Instance.walkingFinished.AddListener(WalkingFinished);
-        //AllEventList.Instance.firstPlayerIsCreate.AddListener(PlayerInit);
+        playerScript.myEventFinish.AddListener(WalkingFinished);
+        AllEventList.Instance.playersIsCreate.AddListener(PlayerInit);
     }
 
 //--------------------------------------------------------------------------------------------//

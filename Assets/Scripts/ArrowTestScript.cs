@@ -10,16 +10,19 @@ public class ArrowTestScript : MonoBehaviour
     //private bool playerIsStop = true;
     public SpriteRenderer spriteRenderer;
     public GameObject currentPlayer;
+    public bool myHeroStart;
 
 
     void Start()
     {
+        Init();
 
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        AllEventList.Instance.startMovingEvent.AddListener(ChangeColor);
-        AllEventList.Instance.walkingFinished.AddListener(ChangeColorOnWhite);
+        currentPlayer.GetComponent<PlayerWalking>().myEventStart.AddListener(ChangeColor);
+        currentPlayer.GetComponent<PlayerWalking>().myEventFinish.AddListener(ChangeColorOnWhite);
         AllEventList.Instance.stopButtonClick.AddListener(ChangeColorOnWhite);
+        AllEventList.Instance.stopButtonClick.AddListener(Init);
     }
 
     void OnMouseDown()
@@ -31,9 +34,9 @@ public class ArrowTestScript : MonoBehaviour
     {
         if (canDelete)
         {
-            if (!AllGlobalVariable.heroStartedWalking)
+            if (!myHeroStart)
             {
-                CollisionMouseWith("MovingBlock").GetComponent<MovingBlockScript>().DeleteArrow(gameObject);
+                CollisionWith("MovingBlock", Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y))).GetComponent<MovingBlockScript>().DeleteArrow(gameObject);
             }
             else
             {
@@ -46,14 +49,14 @@ public class ArrowTestScript : MonoBehaviour
 
     void ChangeCanDeleteStatus()
     {
-        if (!AllGlobalVariable.heroStartedWalking)
+        if (!myHeroStart)
             canDelete = false;
     }
     void ChangeColor()
     {
         spriteRenderer.color = new Color32(110,110,110,255);
 
-        //CollisionMouseWith("") .playerWalking.currentBlock.GetComponent<SpriteRenderer>().color = new Color32(255,255,255,255);
+        currentPlayer.GetComponent<PlayerWalking>().currentBlock.GetComponent<SpriteRenderer>().color = new Color32(255,255,255,255);
     }
 
     void ChangeColorOnWhite()
@@ -76,13 +79,31 @@ public class ArrowTestScript : MonoBehaviour
         animate = _animation;
     }
 
-    public GameObject CollisionMouseWith(string objName)  //Смотрит все объекты под курсором, проверяет есть ли нужный
+    public GameObject CollisionWith(string objName, Vector3 pos)  //Смотрит все объекты под курсором, проверяет есть ли нужный
     {
-        foreach(Collider2D s in Physics2D.OverlapPointAll(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y))))
+        foreach(Collider2D s in Physics2D.OverlapPointAll(pos))
         {
             if (s.tag == objName)
                 return s.gameObject;
         }
         return null;
+    }
+
+    void Init()
+    {
+        
+
+        if (CollisionWith("MovingBlock", transform.position).name == "MovingBlockBlue")
+        {
+            currentPlayer = AllObjectList.Instance.bluePlayerObj;
+            myHeroStart = AllGlobalVariable.heroBlueStartedWalking;
+        }
+        else
+        if (CollisionWith("MovingBlock", transform.position).name == "MovingBlockRed")
+        {
+            Debug.Log("Инициализация сработала");
+            currentPlayer = AllObjectList.Instance.redPlayerObj;
+            myHeroStart = AllGlobalVariable.heroRedStartedWalking;
+        }
     }
 }

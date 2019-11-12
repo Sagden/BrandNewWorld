@@ -13,13 +13,18 @@ public class AllGlobalVariable : MonoBehaviour
 //----------------------- SINGLETONE---------------------------//
 
     public static float overallSpeed = 1.5f;
-    public static bool heroStartedWalking = false;
+    public static bool heroBlueStartedWalking = false;
+    public static bool heroRedStartedWalking = false;
 
     void Start()
     {
-        heroStartedWalking = false;
+        heroBlueStartedWalking = false;
+        heroRedStartedWalking = false;
 
-        AllEventList.Instance.startMovingEvent.AddListener(delegate {heroStartedWalking = true;});
-        AllEventList.Instance.stopButtonClick.AddListener(delegate {heroStartedWalking = false;});
+        AllEventList.Instance.startMovingEventBlue.AddListener(delegate {heroBlueStartedWalking = true;});
+        AllEventList.Instance.startMovingEventRed.AddListener(delegate {heroRedStartedWalking = true;});
+
+        AllEventList.Instance.stopButtonClick.AddListener(delegate {heroBlueStartedWalking = false;});
+        AllEventList.Instance.stopButtonClick.AddListener(delegate {heroRedStartedWalking = false;});
     }
 }

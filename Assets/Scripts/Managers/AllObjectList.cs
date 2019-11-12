@@ -29,10 +29,10 @@ public class AllObjectList : MonoBehaviour
 
     public GameObject bluePlayerObj; //создается чуть позже
     public GameObject redPlayerObj; //создается чуть позже
-    public GameObject redPlayerObj2;
 
 
     public GameObject movingBlockBlue;
+    public GameObject movingBlockRed;
     public MovingBlockScript movingBlockScript;
     public MovingBlockScrolling movingBlockScrolling;
 
@@ -61,6 +61,7 @@ public class AllObjectList : MonoBehaviour
         finishLevelUI = GameObject.Find("FinishLevelUI");
         behavior = GameObject.Find("Behavior");
         movingBlockBlue = GameObject.Find("MovingBlockBlue");
+        movingBlockRed = GameObject.Find("MovingBlockRed");
         firstRobotStartFloor = GameObject.Find("FirstRobotStartFloor");
         secondRobotStartFloor = GameObject.Find("SecondRobotStartFloor");
     
@@ -71,7 +72,5 @@ public class AllObjectList : MonoBehaviour
         sliderScript = slider.GetComponent<SliderScript>();
         gameAreaScrolling = playArea.GetComponent<GameAreaScrolling>();
         stopScript = buttonStop.GetComponent<StopScript>();
-        movingBlockScript = movingBlockBlue.GetComponent<MovingBlockScript>();
-        movingBlockScrolling = movingBlockBlue.GetComponent<MovingBlockScrolling>();
     }
 }

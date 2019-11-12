@@ -14,7 +14,6 @@ public class ArrowScript : ActionBlockAbstract
     void Awake()
     {
         notification = Instantiate(notificationPrefab, new Vector3(transform.position.x + 0.2f, transform.position.y + 0.2f, -1), Quaternion.identity);
-
     }
 
     void OnMouseDown()
