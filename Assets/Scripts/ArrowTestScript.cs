@@ -34,7 +34,7 @@ public class ArrowTestScript : MonoBehaviour
     {
         if (canDelete)
         {
-            if (!myHeroStart)
+            if (!AllGlobalVariable.Instance.GetStartedWalking(currentPlayer))
             {
                 CollisionWith("MovingBlock", Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y))).GetComponent<MovingBlockScript>().DeleteArrow(gameObject);
             }
@@ -49,7 +49,7 @@ public class ArrowTestScript : MonoBehaviour
 
     void ChangeCanDeleteStatus()
     {
-        if (!myHeroStart)
+        if (!AllGlobalVariable.Instance.GetStartedWalking(currentPlayer))
             canDelete = false;
     }
     void ChangeColor()
@@ -91,19 +91,14 @@ public class ArrowTestScript : MonoBehaviour
 
     void Init()
     {
-        
-
         if (CollisionWith("MovingBlock", transform.position).name == "MovingBlockBlue")
         {
             currentPlayer = AllObjectList.Instance.bluePlayerObj;
-            myHeroStart = AllGlobalVariable.heroBlueStartedWalking;
         }
         else
         if (CollisionWith("MovingBlock", transform.position).name == "MovingBlockRed")
         {
-            Debug.Log("Инициализация сработала");
             currentPlayer = AllObjectList.Instance.redPlayerObj;
-            myHeroStart = AllGlobalVariable.heroRedStartedWalking;
         }
     }
 }

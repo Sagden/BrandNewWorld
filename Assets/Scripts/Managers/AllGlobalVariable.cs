@@ -27,4 +27,28 @@ public class AllGlobalVariable : MonoBehaviour
         AllEventList.Instance.stopButtonClick.AddListener(delegate {heroBlueStartedWalking = false;});
         AllEventList.Instance.stopButtonClick.AddListener(delegate {heroRedStartedWalking = false;});
     }
+
+
+    public bool GetStartedWalking(GameObject obj)
+    {
+        if (obj.name == "PlayerBlue(Clone)")
+        {
+            return heroBlueStartedWalking;
+        }
+        else
+        if (obj.name == "PlayerRed(Clone)")
+        {
+            return heroRedStartedWalking;
+        }
+
+        return false;
+    }
+    void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            Debug.Log("Blue: " + heroBlueStartedWalking);
+            Debug.Log("Red: " + heroRedStartedWalking);
+        }
+    }
 }
