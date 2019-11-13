@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 6880557256809345673}
   - component: {fileID: 6880557256809345686}
   - component: {fileID: 6880557256809345687}
-  - component: {fileID: 6880557256809345672}
+  - component: {fileID: 3723895342532707923}
   m_Layer: 5
-  m_Name: ButtonPlay
+  m_Name: ButtonPlayBlue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -118,7 +118,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &6880557256809345672
+--- !u!114 &3723895342532707923
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

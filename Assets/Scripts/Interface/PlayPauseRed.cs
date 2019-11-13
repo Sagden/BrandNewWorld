@@ -3,21 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayPauseScript : MonoBehaviour
+public class PlayPauseRed : MonoBehaviour
 {
     public Button button;
     public GameObject player;
     public PlayerWalking playerScript;
     public string status;
 
-    void Start()
+    void Awake()
     {
         status = "Play";
 
+        gameObject.SetActive(false);
+    }
+
+    void Start()
+    {
         PlayerInit();
 
         button = transform.GetComponent<Button>();
-
 
         button.onClick.AddListener(ClickOnButton);
         playerScript.myEventFinish.AddListener(WalkingFinished);
@@ -48,6 +52,7 @@ public class PlayPauseScript : MonoBehaviour
     }
     public void WalkingPaused()
     {
+        PlayerInit();
         playerScript.pause = true;
         status = "Play";
         gameObject.GetComponent<Image>().sprite = AllObjectList.Instance.playButtonSprite;
@@ -57,11 +62,7 @@ public class PlayPauseScript : MonoBehaviour
 
     public void PlayerInit()
     {
-        if (gameObject.name == "ButtonPlayBlue")
-            playerScript = AllObjectList.Instance.bluePlayerObj.GetComponent<PlayerWalking>();
-        else
-        if (gameObject.name == "ButtonPlayRed")
-            playerScript = AllObjectList.Instance.redPlayerObj.GetComponent<PlayerWalking>();
+        playerScript = AllObjectList.Instance.redPlayerObj.GetComponent<PlayerWalking>();
     }
 
 }

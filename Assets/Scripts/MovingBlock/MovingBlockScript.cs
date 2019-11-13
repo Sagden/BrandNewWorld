@@ -10,7 +10,7 @@ public class MovingBlockScript : MovingBlockParent
     public List<GameObject> showArrows;
     public GameObject testArrow;
     public Animation _animation;
-    public GameObject playObj;
+    public string playPauseStatus;
     public GameObject myMovingBlock;
     public string myName;
     public float myOffset;
@@ -20,17 +20,18 @@ public class MovingBlockScript : MovingBlockParent
         myName = gameObject.name;
         _animation = gameObject.GetComponent<Animation>();
 
-        if (myName == "MovingBlockBlue")
+        if (myName == "MovingBlockBlue(Clone)")
         {
             myOffset = -3.18f;
-            playObj = AllObjectList.Instance.buttonPlayBlue;
+            playPauseStatus = AllObjectList.Instance.buttonPlayBlue.GetComponent<PlayPauseBlue>().status;
+            Debug.Log(AllObjectList.Instance.buttonPlayBlue.GetComponent<PlayPauseBlue>().status);
             myMovingBlock = AllObjectList.Instance.movingBlockBlue;
         }
         else
-        if (myName == "MovingBlockRed")
+        if (myName == "MovingBlockRed(Clone)")
         {
             myOffset = -2.2f;
-            playObj = AllObjectList.Instance.buttonPlayRed;
+            playPauseStatus = AllObjectList.Instance.buttonPlayRed.GetComponent<PlayPauseRed>().status;
             myMovingBlock = AllObjectList.Instance.movingBlockRed;
         }
         gameObject.GetComponent<BehaviorLikeUI>().coordinateRelativeCamera = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y+myOffset) - Camera.main.transform.position; 

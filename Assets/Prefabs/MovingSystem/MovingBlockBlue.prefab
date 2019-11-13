@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 7721902423163282740}
   m_Layer: 0
   m_Name: MovingBlockBlue
-  m_TagString: Untagged
+  m_TagString: MovingBlock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -115,6 +115,10 @@ MonoBehaviour:
   testArrow: {fileID: 4022134156506799893, guid: e6e3e48204431724ca1229704b404279,
     type: 3}
   _animation: {fileID: 0}
+  playObj: {fileID: 0}
+  myMovingBlock: {fileID: 0}
+  myName: 
+  myOffset: 0
 --- !u!114 &7930398710267349177
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,11 +131,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c24049a20a74fbd4d8ac8357deedc7cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coordinateRelativeCamera: {x: 0, y: 0, z: 0}
+  mouseCoordinateStart: {x: 0, y: 0, z: 0}
   movingBlockCoordinateXStart: 0
   coordinateDifference: {x: 0, y: 0, z: 0}
   difference: 0
-  canScrolling: 0
 --- !u!111 &7721902423163282743
 Animation:
   m_ObjectHideFlags: 0

@@ -91,12 +91,12 @@ public class ArrowTestScript : MonoBehaviour
 
     void Init()
     {
-        if (CollisionWith("MovingBlock", transform.position).name == "MovingBlockBlue")
+        if (CollisionWith("MovingBlock", transform.position).name == "MovingBlockBlue(Clone)")
         {
             currentPlayer = AllObjectList.Instance.bluePlayerObj;
         }
         else
-        if (CollisionWith("MovingBlock", transform.position).name == "MovingBlockRed")
+        if (CollisionWith("MovingBlock", transform.position).name == "MovingBlockRed(Clone)")
         {
             currentPlayer = AllObjectList.Instance.redPlayerObj;
         }

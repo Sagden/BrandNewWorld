@@ -14,7 +14,6 @@ public class AllObjectList : MonoBehaviour
     
     public GameObject buttonPlayBlue;
     public GameObject buttonPlayRed;
-    public PlayPauseScript playPauseScript;
 
     public GameObject buttonStop;
     public StopScript stopScript;

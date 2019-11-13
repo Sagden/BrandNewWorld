@@ -10,19 +10,31 @@ public class StartFloorRed : StartFloorParent
 
     void Awake()
     {
-        CreateAndInitRedPlayer();
+        CreateRedPlayer();
+
+        AllEventList.Instance.stopButtonClick.AddListener(CreateRedPlayer);
+        AllEventList.Instance.stopButtonClick.AddListener(InitRedPlayer);
     }
 
-    public void CreateAndInitRedPlayer()
+    void Start()
     {
-        AllObjectList.Instance.redPlayerObj = CreatePlayer(player, playerParent);
+        InitRedPlayer();
+    }
 
+    public void InitRedPlayer()
+    {
         var path = AllObjectList.Instance.redPlayerObj.GetComponent<PlayerWalking>();
+
+            path.myMovingBlockScript = AllObjectList.Instance.movingBlockRed.GetComponent<MovingBlockScript>();
             path.myFinishFloorName = "RedRobotFinishFloor";
             path.iam = AllObjectList.Instance.redPlayerObj;
             path.myMovingBlock = AllObjectList.Instance.movingBlockRed;
-            path.myMovingBlockScript = AllObjectList.Instance.movingBlockRed.GetComponent<MovingBlockScript>();
             path.myEventStart = AllEventList.Instance.startMovingEventRed;
             path.myEventFinish = AllEventList.Instance.walkingFinishedRed;
+    }
+
+    public void CreateRedPlayer()
+    {
+        AllObjectList.Instance.redPlayerObj = CreatePlayer(player, playerParent);
     }
 }

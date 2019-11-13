@@ -29,15 +29,19 @@ public class StopScript : MonoBehaviour
             Destroy(GameObject.Find("PlayerParent(Clone)"));
             Destroy(GameObject.Find("PlayerParent(Clone)"));
 
-            
-            AllObjectList.Instance.blueRobotStartFloor.GetComponent<StartFloorBlue>().CreateAndInitBluePlayer();
-            AllObjectList.Instance.redRobotStartFloor.GetComponent<StartFloorRed>().CreateAndInitRedPlayer();
-            AllObjectList.Instance.buttonPlayBlue.GetComponent<PlayPauseScript>().WalkingPaused();
-            AllObjectList.Instance.buttonPlayRed.GetComponent<PlayPauseScript>().WalkingPaused();
-
-
             AllEventList.Instance.stopButtonClick.Invoke();
-            AllEventList.Instance.playersIsCreate.Invoke();
+
+            
+
+            try
+            {
+                AllObjectList.Instance.buttonPlayBlue.GetComponent<PlayPauseBlue>().WalkingPaused();
+                AllObjectList.Instance.buttonPlayRed.GetComponent<PlayPauseRed>().WalkingPaused();
+            }
+            catch
+            {
+                Debug.Log("Error");
+            }
         }
     }
 
