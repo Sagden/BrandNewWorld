@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2659377534116798930}
   - component: {fileID: 2659377534116798931}
-  - component: {fileID: 2659377534116798925}
   - component: {fileID: 2659377534116798924}
+  - component: {fileID: 8370339849723496832}
   m_Layer: 0
-  m_Name: FirstRobotStartFloor
+  m_Name: RedRobotStartFloor
   m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,7 +72,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b3c6fe1dd2de1ca49a8a71b1630a7078, type: 3}
-  m_Color: {r: 0.54509807, g: 0.79516566, b: 0.99215686, a: 1}
+  m_Color: {r: 1, g: 0.5648365, b: 0.56078434, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -82,21 +82,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2659377534116798925
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2659377534116798928}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cc1ec072ad8e5e4295ad39896eefa9e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 1875933540754927150, guid: 59963e3e845bed047b5e45ddce71aaf1, type: 3}
-  playerParent: {fileID: 5463848653514092510, guid: 0a2425c3adc982243bfc72a0c1b4c7b6,
-    type: 3}
 --- !u!61 &2659377534116798924
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -123,3 +108,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &8370339849723496832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2659377534116798928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e417cd48f4515141b630266e1fbf20d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1875933540754927150, guid: 9510a4faf26a06748bd93a8044f84713, type: 3}
+  playerParent: {fileID: 5463848653514092510, guid: 0a2425c3adc982243bfc72a0c1b4c7b6,
+    type: 3}

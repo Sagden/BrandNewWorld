@@ -6,11 +6,11 @@ using UnityEngine.Events;
 
 public class PlayerReactionOnFloor : MonoBehaviour
 {
-    public void CheckFloorType()
+    public void CheckFloorType(string floorName)
     {
-        if (WhatUnderMe("FirstRobotFinishFloor", gameObject.transform.position))
+        if (WhatUnderMe(floorName, gameObject.transform.position))
         {
-            AllEventList.Instance.firstPlayerOnFinishFloor.Invoke();
+            AllEventList.Instance.bluePlayerOnFinishFloor.Invoke();
         }
     }
 

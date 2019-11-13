@@ -13,7 +13,7 @@ public class GameAreaScrolling : MonoBehaviour
 
     void Start()
     {
-        AllEventList.Instance.firstPlayerOnFinishFloor.AddListener(BanOnScroll);
+        AllEventList.Instance.bluePlayerOnFinishFloor.AddListener(BanOnScroll);
         gameObject.GetComponent<BehaviorLikeUI>().coordinateRelativeCamera = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y+5.9f) - Camera.main.transform.position;
     }
 

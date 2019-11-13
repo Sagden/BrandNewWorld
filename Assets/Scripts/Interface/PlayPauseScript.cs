@@ -28,7 +28,7 @@ public class PlayPauseScript : MonoBehaviour
 
     void ClickOnButton()
     {
-        if (status == "Play" && !playerScript._animation.isPlaying)
+        if (status == "Play" && !playerScript.animationPlayer.isPlaying)
         {
             status = "Pause";
             gameObject.GetComponent<Image>().sprite = AllObjectList.Instance.pauseButtonSprite;

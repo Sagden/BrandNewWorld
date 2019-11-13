@@ -14,7 +14,7 @@ public abstract class ActionBlockAbstract : MonoBehaviour
     {
         banOnArrowDrag = false;
 
-        AllEventList.Instance.firstPlayerOnFinishFloor.AddListener(BanOnArrowDrag);
+        AllEventList.Instance.bluePlayerOnFinishFloor.AddListener(BanOnArrowDrag);
     }
 
     public abstract void AddArrowToMovingBlock();

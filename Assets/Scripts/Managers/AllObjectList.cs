@@ -19,8 +19,8 @@ public class AllObjectList : MonoBehaviour
     public GameObject buttonStop;
     public StopScript stopScript;
 
-    public GameObject firstRobotStartFloor;
-    public GameObject secondRobotStartFloor;
+    public GameObject blueRobotStartFloor;
+    public GameObject redRobotStartFloor;
 
     public GameObject finishLevelUI;
 
@@ -62,8 +62,8 @@ public class AllObjectList : MonoBehaviour
         behavior = GameObject.Find("Behavior");
         movingBlockBlue = GameObject.Find("MovingBlockBlue");
         movingBlockRed = GameObject.Find("MovingBlockRed");
-        firstRobotStartFloor = GameObject.Find("FirstRobotStartFloor");
-        secondRobotStartFloor = GameObject.Find("SecondRobotStartFloor");
+        blueRobotStartFloor = GameObject.Find("BlueRobotStartFloor");
+        redRobotStartFloor = GameObject.Find("RedRobotStartFloor");
     
 
 
