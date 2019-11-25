@@ -4,20 +4,24 @@ using UnityEngine;
 
 public class ArrowTestScript : MonoBehaviour
 {
-    [SerializeField]private Vector2 direction;
+    [SerializeField]private Vector3 direction;
     [SerializeField]private AnimationClip animate;
-    [SerializeField] private bool canDelete = true;
-    //private bool playerIsStop = true;
+    [SerializeField]private bool canDelete = true;
+    private CollisionEvents collisionEvents;
+    private bool playerIsStop = true;
     public SpriteRenderer spriteRenderer;
     public GameObject currentPlayer;
     public bool myHeroStart;
 
+    public Vector2 Direction { get => direction; set => direction = value; }
+    public AnimationClip Animate { get => animate; set => animate = value; }
 
     void Start()
     {
-        Init();
-
+        collisionEvents = GetComponent<CollisionEvents>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        Init();
 
         currentPlayer.GetComponent<PlayerWalking>().myEventStart.AddListener(ChangeColor);
         currentPlayer.GetComponent<PlayerWalking>().myEventFinish.AddListener(ChangeColorOnWhite);
@@ -36,14 +40,13 @@ public class ArrowTestScript : MonoBehaviour
         {
             if (!AllGlobalVariable.Instance.GetStartedWalking(currentPlayer))
             {
-                CollisionWith("MovingBlock", Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y))).GetComponent<MovingBlockScript>().DeleteArrow(gameObject);
+                collisionEvents.CollisionWithTag("MovingBlock", Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y))).GetComponent<MovingBlockScript>().DeleteArrow(gameObject);
             }
             else
             {
                 AllObjectList.Instance.stopScript.Shake();
             }
         }
-
         canDelete = true;
     }
 
@@ -56,47 +59,22 @@ public class ArrowTestScript : MonoBehaviour
     {
         spriteRenderer.color = new Color32(110,110,110,255);
 
-        currentPlayer.GetComponent<PlayerWalking>().currentBlock.GetComponent<SpriteRenderer>().color = new Color32(255,255,255,255);
+        currentPlayer.GetComponent<PlayerWalking>().CurrentBlock.GetComponent<SpriteRenderer>().color = new Color32(255,255,255,255);
     }
 
     void ChangeColorOnWhite()
     {
         spriteRenderer.color = new Color32(255,255,255,255);
     }
-    public Vector2 get()
-    {
-        return direction;
-    }
-
-    public AnimationClip getAnimation()
-    {
-        return animate;
-    }
-
-    public void set(Vector2 _dir, AnimationClip _animation)
-    {
-        direction = _dir;
-        animate = _animation;
-    }
-
-    public GameObject CollisionWith(string objName, Vector3 pos)  //Смотрит все объекты под курсором, проверяет есть ли нужный
-    {
-        foreach(Collider2D s in Physics2D.OverlapPointAll(pos))
-        {
-            if (s.tag == objName)
-                return s.gameObject;
-        }
-        return null;
-    }
 
     void Init()
     {
-        if (CollisionWith("MovingBlock", transform.position).name == "MovingBlockBlue(Clone)")
+        if (collisionEvents.CollisionWithTag("MovingBlock", transform.position).name == "MovingBlockBlue(Clone)")
         {
             currentPlayer = AllObjectList.Instance.bluePlayerObj;
         }
         else
-        if (CollisionWith("MovingBlock", transform.position).name == "MovingBlockRed(Clone)")
+        if (collisionEvents.CollisionWithTag("MovingBlock", transform.position).name == "MovingBlockRed(Clone)")
         {
             currentPlayer = AllObjectList.Instance.redPlayerObj;
         }

@@ -4,14 +4,18 @@ using UnityEngine;
 
 public abstract class ActionBlockAbstract : MonoBehaviour
 {
-    public static GameObject selectArrow = null;
+    private static GameObject selectArrow = null;
+    protected CollisionEvents collisionEvents;
 
     public static bool banOnArrowDrag = false;
 
     public static GameObject prefabObject;
 
+    public static GameObject SelectArrow { get => selectArrow; set => selectArrow = value; }
+
     void Start()
     {
+        collisionEvents = GetComponent<CollisionEvents>();
         banOnArrowDrag = false;
 
         AllEventList.Instance.bluePlayerOnFinishFloor.AddListener(BanOnArrowDrag);
@@ -24,13 +28,5 @@ public abstract class ActionBlockAbstract : MonoBehaviour
     {
         banOnArrowDrag = true;
     }
-    public GameObject CollisionMouseWith(string objName)  //Смотрит все объекты под курсором, проверяет есть ли нужный
-    {
-        foreach(Collider2D s in Physics2D.OverlapPointAll(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y))))
-        {
-            if (s.tag == objName)
-                return s.gameObject;
-        }
-        return null;
-    }
+    
 }

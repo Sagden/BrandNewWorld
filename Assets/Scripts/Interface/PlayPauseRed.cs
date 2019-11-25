@@ -32,12 +32,12 @@ public class PlayPauseRed : MonoBehaviour
 
     void ClickOnButton()
     {
-        if (status == "Play" && !playerScript.animationPlayer.isPlaying)
+        if (status == "Play" && !playerScript.AnimationPlayer.isPlaying)
         {
             status = "Pause";
             gameObject.GetComponent<Image>().sprite = AllObjectList.Instance.pauseButtonSprite;
 
-            playerScript.pause = false;
+            playerScript.Pause = false;
             playerScript.StartMoving();
         }
         else
@@ -53,7 +53,7 @@ public class PlayPauseRed : MonoBehaviour
     public void WalkingPaused()
     {
         PlayerInit();
-        playerScript.pause = true;
+        playerScript.Pause = true;
         status = "Play";
         gameObject.GetComponent<Image>().sprite = AllObjectList.Instance.playButtonSprite;
     }

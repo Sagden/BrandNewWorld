@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8206134241857956937}
   - component: {fileID: 5556319354448005250}
   - component: {fileID: 3713078362628571774}
+  - component: {fileID: 3357557368392292859}
   - component: {fileID: 2587496526545851462}
   m_Layer: 0
   m_Name: ArrowTest
@@ -94,7 +95,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2397ac9ed1f99824397baee86669c3d8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  direction: {x: 0, y: 0, z: 0}
+  animate: {fileID: 0}
+  canDelete: 1
   spriteRenderer: {fileID: 0}
+  currentPlayer: {fileID: 0}
+  myHeroStart: 0
+--- !u!114 &3357557368392292859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4022134156506799893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd0ffd6f72cdcbd468469ccb3577ebc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!61 &2587496526545851462
 BoxCollider2D:
   m_ObjectHideFlags: 0

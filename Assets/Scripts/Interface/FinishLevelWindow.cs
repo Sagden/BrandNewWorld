@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class FinishLevelWindow : MonoBehaviour
 {
+    private GameObject finishFloor;
+
     void Start()
     {
-        AllEventList.Instance.bluePlayerOnFinishFloor.AddListener(ShowFinishLevelUI);
+        finishFloor = GameObject.Find("BlueRobotFinishFloor");
+
+        AllEventList.Instance.bluePlayerOnFinishFloor.AddListener(delegate { Invoke("ShowFinishLevelUI", 0.3f); });
         gameObject.SetActive(false);
     }
 
     void ShowFinishLevelUI()
     {
-        gameObject.SetActive(true);
+        
+        finishFloor.GetComponent<Animation>().Play();
+
+        //gameObject.SetActive(true);
     }
 }

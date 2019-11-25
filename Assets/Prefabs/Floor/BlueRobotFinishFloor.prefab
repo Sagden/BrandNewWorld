@@ -11,8 +11,9 @@ GameObject:
   - component: {fileID: 6824260245315638506}
   - component: {fileID: 6824260245315638507}
   - component: {fileID: 6824260245315638505}
+  - component: {fileID: 8247420796245230473}
   m_Layer: 0
-  m_Name: FirstRobotFinishFloor
+  m_Name: BlueRobotFinishFloor
   m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -70,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b3c6fe1dd2de1ca49a8a71b1630a7078, type: 3}
+  m_Sprite: {fileID: 21300000, guid: eaa850d72e51f014291e2e3dd68ee6ed, type: 3}
   m_Color: {r: 0.31479177, g: 0.3374538, b: 0.509434, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -107,3 +108,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!111 &8247420796245230473
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6824260245315638508}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 30c107ef1b4f6294fb5d6bb99a167f9d, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 30c107ef1b4f6294fb5d6bb99a167f9d, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 1
+  m_AnimatePhysics: 0
+  m_CullingType: 0

@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class CurrentLevelTextBehavior : MonoBehaviour
 {
-
     void Start()
     {
         gameObject.GetComponent<Text>().text = SceneManager.GetActiveScene().name;

@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3634826864742968327}
   - component: {fileID: 3634826864742968345}
   - component: {fileID: 3634826864742968326}
+  - component: {fileID: 2510068434434655950}
   - component: {fileID: 4657735188992748630}
-  - component: {fileID: 3647666045679208988}
   m_Layer: 0
   m_Name: ArrowRight
   m_TagString: Untagged
@@ -123,15 +123,7 @@ MonoBehaviour:
     type: 3}
   notification: {fileID: 0}
   canCreateArrowAtClick: 1
---- !u!222 &4657735188992748630
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3634826864742968325}
-  m_CullTransparentMesh: 0
---- !u!114 &3647666045679208988
+--- !u!114 &2510068434434655950
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,26 +132,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 3634826864742968325}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Script: {fileID: 11500000, guid: dd0ffd6f72cdcbd468469ccb3577ebc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 0.9339623, g: 0, b: 0, a: 1}
-  m_RaycastTarget: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: 89f067ccdb493e64b9a09b69727ea8f5, type: 3}
-    m_FontSize: 300
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 300
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
-    m_LineSpacing: 1
-  m_Text: popo
+--- !u!222 &4657735188992748630
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3634826864742968325}
+  m_CullTransparentMesh: 0

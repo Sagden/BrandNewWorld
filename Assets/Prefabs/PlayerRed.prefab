@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 1875933540754927150}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1, y: 1, z: -2.4217002}
-  m_LocalScale: {x: 0.35, y: 0.35, z: 0.3}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.3}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 218a811619ea0a5489c2d499d2883ecb, type: 3}
-  m_Color: {r: 1, g: 0.5424528, b: 0.5424528, a: 1}
+  m_Sprite: {fileID: 21300000, guid: ae2294f95c092584abee3587ac8bfbfa, type: 3}
+  m_Color: {r: 0.89019614, g: 0.53333336, b: 0.56078434, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -98,11 +98,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70dd3f32656f74144b7143d164e89f43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentBlock: {fileID: 0}
-  _animation: {fileID: 0}
-  currentStep: 0
-  pause: 0
-  iam: {fileID: 0}
+  myFinishFloorName: 
+  myEventFinish:
+    m_PersistentCalls:
+      m_Calls: []
+  myEventStart:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &2266950190993679715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,10 +129,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acc74ed105e680d4eb782fe287ae35d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spriteRight: {fileID: 21300000, guid: 218a811619ea0a5489c2d499d2883ecb, type: 3}
-  spriteLeft: {fileID: 21300000, guid: 494e4cc55b8eeb24086a075e7d509845, type: 3}
-  spriteUp: {fileID: 21300000, guid: c9a6123b4f78f2a4c96ac7f3243bfec5, type: 3}
-  spriteDown: {fileID: 21300000, guid: f8b85dbfb14ff3c4a8a8ccbc63ea4556, type: 3}
+  spriteRight: {fileID: 21300000, guid: ae2294f95c092584abee3587ac8bfbfa, type: 3}
+  spriteLeft: {fileID: 21300000, guid: ae2294f95c092584abee3587ac8bfbfa, type: 3}
+  spriteUp: {fileID: 21300000, guid: ae2294f95c092584abee3587ac8bfbfa, type: 3}
+  spriteDown: {fileID: 21300000, guid: ae2294f95c092584abee3587ac8bfbfa, type: 3}
 --- !u!111 &7651165649760946224
 Animation:
   m_ObjectHideFlags: 0
@@ -162,8 +164,8 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.50323, y: 0.29553688}
-    oldSize: {x: 1.48, y: 2.11}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 5, y: 5}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

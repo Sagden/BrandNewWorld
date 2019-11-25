@@ -9,6 +9,12 @@ public class AllObjectList : MonoBehaviour
     public GameObject actionBlock;
     public CreateArrow createArrow;
 
+    public GameObject notification;
+    public GameObject notificationObj;
+    public Notifications notificationScript;
+
+    public GameObject playersSolidBlock;
+
     public GameObject slider;
     public SliderScript sliderScript;
     
@@ -47,7 +53,6 @@ public class AllObjectList : MonoBehaviour
         {
             Instance = this;
         }
-
         Application.targetFrameRate = 60;
 
         //Объявление объектов
@@ -67,6 +72,7 @@ public class AllObjectList : MonoBehaviour
 
 
         // Объявление скриптов
+        notificationScript = notification.GetComponent<Notifications>();
         createArrow = actionBlock.GetComponent<CreateArrow>();
         sliderScript = slider.GetComponent<SliderScript>();
         gameAreaScrolling = playArea.GetComponent<GameAreaScrolling>();

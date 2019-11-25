@@ -22,7 +22,7 @@ public class ArrowScript : ActionBlockAbstract
         {
             canCreateArrowAtClick = true;
             Invoke("CanCreateArrowAtClick", 0.3f);
-            selectArrow = gameObject;
+            SelectArrow = gameObject;
             prefabObject = Instantiate(arrowPrefab, new Vector3(0,0,-1), transform.rotation);
             thisArrowSelect.AddListener(AddArrowToMovingBlock);
         }
@@ -39,13 +39,13 @@ public class ArrowScript : ActionBlockAbstract
 
     public override void AddArrowToMovingBlock()
     {
-        if ((CollisionMouseWith("MovingBlock") && (CollisionMouseWith("MovingBlock").GetComponent<MovingBlockScript>().playPauseStatus == "Play"))) //AllObjectList.Instance.playPauseScript.status == "Play") // || (canCreateArrowAtClick == true)
+        if ((collisionEvents.CollisionWithTag("MovingBlock") && (collisionEvents.CollisionWithTag("MovingBlock").GetComponent<MovingBlockScript>().playPauseStatus == "Play"))) //AllObjectList.Instance.playPauseScript.status == "Play") // || (canCreateArrowAtClick == true)
             {
-                CollisionMouseWith("MovingBlock").GetComponent<MovingBlockScript>().AddArrow(selectArrow);
+                collisionEvents.CollisionWithTag("MovingBlock").GetComponent<MovingBlockScript>().AddArrow(SelectArrow);
             }
             
         Destroy(prefabObject);
-        selectArrow = null;
+        SelectArrow = null;
     }
 
     void OnDestroy()

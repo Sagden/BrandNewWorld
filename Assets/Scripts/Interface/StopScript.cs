@@ -29,6 +29,7 @@ public class StopScript : MonoBehaviour
             Destroy(GameObject.Find("PlayerParent(Clone)"));
             Destroy(GameObject.Find("PlayerParent(Clone)"));
 
+
             AllEventList.Instance.stopButtonClick.Invoke();
 
             
