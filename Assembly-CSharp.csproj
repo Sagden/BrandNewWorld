@@ -54,7 +54,8 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\ArrowTestScript.cs" />
-     <Compile Include="Assets\Scripts\ChangeColorPlayer.cs" />
+     <Compile Include="Assets\Scripts\ChangeColorBluePlayer.cs" />
+     <Compile Include="Assets\Scripts\ChangeColorRedPlayer.cs" />
      <Compile Include="Assets\Scripts\CollisionEvents.cs" />
      <Compile Include="Assets\Scripts\CurrentLevelTextBehavior.cs" />
      <Compile Include="Assets\Scripts\Floor\StartFloorBlue.cs" />

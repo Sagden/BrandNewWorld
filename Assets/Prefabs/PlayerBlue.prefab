@@ -14,8 +14,8 @@ GameObject:
   - component: {fileID: 2266950190993679715}
   - component: {fileID: 6386194489319599165}
   - component: {fileID: 7651165649760946224}
+  - component: {fileID: 1178461743332658174}
   - component: {fileID: -3806688100078922798}
-  - component: {fileID: -5846146221358801898}
   - component: {fileID: 4532268956870384005}
   m_Layer: 0
   m_Name: PlayerBlue
@@ -149,6 +149,30 @@ Animation:
   m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &1178461743332658174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875933540754927150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfa294557ceaecc4ab7e9fa7ea7ca1fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  distance: 0
+  maxDistance: 0
+  blueFinishFloor: {fileID: 0}
+  rStart: 0
+  gStart: 0
+  bStart: 0
+  rFinish: 0
+  gFinish: 0
+  bFinish: 0
+  rCurrent: 0
+  gCurrent: 0
+  bCurrent: 0
 --- !u!61 &-3806688100078922798
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -175,18 +199,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &-5846146221358801898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1875933540754927150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cfa294557ceaecc4ab7e9fa7ea7ca1fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &4532268956870384005
 Rigidbody2D:
   serializedVersion: 4

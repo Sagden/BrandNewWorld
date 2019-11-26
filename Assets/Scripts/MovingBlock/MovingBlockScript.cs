@@ -86,6 +86,10 @@ public class MovingBlockScript : MovingBlockParent
                 objScript.Direction = new Vector2(0, -0.5f);
                 objScript.Animate = _animation.GetClip("PlayerAnimationDown");
                 break; 
+
+                case "ArrowJump(Clone)": 
+                objScript.JumpToStep = 1;
+                break; 
             }
             showArrows.Add(obj);
         }

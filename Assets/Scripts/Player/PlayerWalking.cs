@@ -22,7 +22,7 @@ public class PlayerWalking : PlayerParent
 
         if (IsListHaveBlock()) // Проверка не пустой ли список
         {
-            CurrentBlock = MyMovingBlockScript.showArrows[currentStep];
+            CurrentBlock = MyMovingBlockScript.showArrows[CurrentStep];
 
             myEventStart.Invoke();
             
@@ -63,7 +63,7 @@ public class PlayerWalking : PlayerParent
              уведомления  */
 
             Debug.Log("Там стена!");
-            currentStep += 1;
+            CurrentStep += 1;
             StartMoving();
         }
     } 
@@ -74,6 +74,7 @@ public class PlayerWalking : PlayerParent
 
         if (!Pause)
         {
+            //if (currentBlock.GetComponent<ArrowTestScript>().JumpToStep == null)
             Step(CurrentBlock.GetComponent<ArrowTestScript>().Direction, CurrentBlock.GetComponent<ArrowTestScript>().Animate);
         }
     }

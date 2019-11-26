@@ -7,6 +7,7 @@ public class ArrowTestScript : MonoBehaviour
     [SerializeField]private Vector3 direction;
     [SerializeField]private AnimationClip animate;
     [SerializeField]private bool canDelete = true;
+    private int jumpToStep;
     private CollisionEvents collisionEvents;
     private bool playerIsStop = true;
     public SpriteRenderer spriteRenderer;
@@ -15,6 +16,7 @@ public class ArrowTestScript : MonoBehaviour
 
     public Vector2 Direction { get => direction; set => direction = value; }
     public AnimationClip Animate { get => animate; set => animate = value; }
+    public int JumpToStep { get => jumpToStep; set => jumpToStep = value; }
 
     void Start()
     {

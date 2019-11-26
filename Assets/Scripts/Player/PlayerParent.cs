@@ -6,7 +6,7 @@ using System.Linq;
 
 public class PlayerParent : MonoBehaviour
 {
-    protected int currentStep = 0;
+    private int currentStep = 0;
     private MovingBlockScript myMovingBlockScript;
     private GameObject iam;
     private Animation animationPlayer;
@@ -27,6 +27,7 @@ public class PlayerParent : MonoBehaviour
         protected get => iam; 
         set => iam = value; 
     }
+    public int CurrentStep { get => currentStep; set => currentStep = value; }
 
     void Start()
     {
@@ -40,11 +41,11 @@ public class PlayerParent : MonoBehaviour
         AnimationPlayer[_anim.name].speed = AllGlobalVariable.overallSpeed / 1f;
         AnimationPlayer.Play(_anim.name);
 
-        iam.GetComponent<PlayerSpriteDrawing>().SetSprite(currentStep);
+        iam.GetComponent<PlayerSpriteDrawing>().SetSprite(CurrentStep);
     }
     public bool IsListHaveBlock() // Проверяет есть ли команды для выполнения
     {
-        return MyMovingBlockScript.showArrows.Count > currentStep;
+        return MyMovingBlockScript.showArrows.Count > CurrentStep;
     }
     public bool CollisionPointWith(string tag, Vector3 direction)
     {
