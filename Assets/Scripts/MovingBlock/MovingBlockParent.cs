@@ -4,15 +4,17 @@ using UnityEngine;
 
 public abstract class MovingBlockParent : MonoBehaviour
 {
-    public List<GameObject> showArrows;
-
-    
-    public void ClearList() //очистить коллекцию
+    public List<GameObject> allArrows;
+    void Start()
     {
-        for(int i = 0; i < showArrows.Count; i++)
-        {
-            Destroy(showArrows[i]);
-        }
-        showArrows.Clear();
+        AllEventList.Instance.stopButtonClick.AddListener(
+            delegate { gameObject.GetComponentInParent<SelectBlockInMovingBlock>().AllBlockToActive(allArrows); }
+            );
     }
+
+    void AllBlockToActive()
+    {
+        
+    }
+
 }

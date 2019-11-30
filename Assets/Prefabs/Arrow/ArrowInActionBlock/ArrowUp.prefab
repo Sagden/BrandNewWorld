@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 1841394590364008803}
   - component: {fileID: 1841394590364008812}
   - component: {fileID: 7055305066392044663}
+  - component: {fileID: -8131983447154888032}
   m_Layer: 0
   m_Name: ArrowUp
   m_TagString: Untagged
@@ -108,15 +109,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae635e96b10dafb4bbbf86506e18a1f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisArrowSelect:
-    m_PersistentCalls:
-      m_Calls: []
   arrowPrefab: {fileID: 4022134156506799893, guid: dbf31d7fa2668f44194292ab065faaeb,
     type: 3}
   notificationPrefab: {fileID: 6176683217360708874, guid: 8ceb687865d7c444ca766f0d4befbe55,
     type: 3}
-  notification: {fileID: 0}
-  canCreateArrowAtClick: 1
+  dir: {x: 0, y: 0.5, z: 0}
+  type: 0
 --- !u!114 &7055305066392044663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,3 +127,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd0ffd6f72cdcbd468469ccb3577ebc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!111 &-8131983447154888032
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1841394590364008800}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: b226060259407ef4ab3c84d59790c09c, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: b226060259407ef4ab3c84d59790c09c, type: 2}
+  - {fileID: 7400000, guid: 1f9b893e726645a439b360abe36a4be9, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0

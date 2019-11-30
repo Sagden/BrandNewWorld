@@ -45,7 +45,7 @@ public class PlayerParent : MonoBehaviour
     }
     public bool IsListHaveBlock() // Проверяет есть ли команды для выполнения
     {
-        return MyMovingBlockScript.showArrows.Count > CurrentStep;
+        return MyMovingBlockScript.allArrows.Count > CurrentStep;
     }
     public bool CollisionPointWith(string tag, Vector3 direction)
     {

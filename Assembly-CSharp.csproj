@@ -73,6 +73,7 @@
      <Compile Include="Assets\Scripts\Interface\Notifications.cs" />
      <Compile Include="Assets\Scripts\Interface\PlayPauseBlue.cs" />
      <Compile Include="Assets\Scripts\Interface\PlayPauseRed.cs" />
+     <Compile Include="Assets\Scripts\Interface\SelectBlockInMovingBlock.cs" />
      <Compile Include="Assets\Scripts\Interface\StopScript.cs" />
      <Compile Include="Assets\Scripts\LogScript.cs" />
      <Compile Include="Assets\Scripts\Managers\AllEventList.cs" />

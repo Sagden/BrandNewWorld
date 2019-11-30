@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class ActionBlockAbstract : MonoBehaviour
 {
     private static GameObject selectArrow = null;
+    private bool iamInMovingBlock = false;
     protected CollisionEvents collisionEvents;
 
     public static bool banOnArrowDrag = false;
@@ -12,6 +13,7 @@ public abstract class ActionBlockAbstract : MonoBehaviour
     public static GameObject prefabObject;
 
     public static GameObject SelectArrow { get => selectArrow; set => selectArrow = value; }
+    public bool IamInMovingBlock { get => iamInMovingBlock; set => iamInMovingBlock = value; }
 
     void Start()
     {

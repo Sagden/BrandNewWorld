@@ -15,9 +15,10 @@ public class PlayerSpriteDrawing : MonoBehaviour
     {
         spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
+    
     public void SetSprite(int currentStepIndex)
     {
-        switch (gameObject.GetComponent<PlayerWalking>().MyMovingBlock.GetComponent<MovingBlockScript>().allArrows[currentStepIndex])
+        switch (gameObject.GetComponent<PlayerWalking>().MyMovingBlock.GetComponent<MovingBlockScript>().allArrows[currentStepIndex].name)
             {
                 case "ArrowRight(Clone)": 
                     spriteRenderer.sprite = spriteRight;

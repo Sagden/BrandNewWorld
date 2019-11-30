@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4082975832897836906}
   - component: {fileID: 1462388546048059706}
+  - component: {fileID: 7971517953092869683}
+  - component: {fileID: -8161995866455956268}
   m_Layer: 0
   m_Name: MovingBlockParent
   m_TagString: Untagged
@@ -43,3 +45,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8d9e8d0711b0774fada34d9c862cf32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  movingBlockBlue: {fileID: 0}
+  movingBlockRed: {fileID: 0}
+--- !u!114 &7971517953092869683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7164940532111126306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 385171ecb1939144b91bd820b2b4daab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!111 &-8161995866455956268
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7164940532111126306}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 1f9b893e726645a439b360abe36a4be9, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 1f9b893e726645a439b360abe36a4be9, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0

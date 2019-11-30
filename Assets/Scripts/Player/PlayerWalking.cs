@@ -22,12 +22,12 @@ public class PlayerWalking : PlayerParent
 
         if (IsListHaveBlock()) // Проверка не пустой ли список
         {
-            CurrentBlock = MyMovingBlockScript.showArrows[CurrentStep];
+            CurrentBlock = MyMovingBlockScript.allArrows[CurrentStep];
 
             myEventStart.Invoke();
             
             Invoke("StepTime", 1.1f / AllGlobalVariable.overallSpeed);
-
+            ReshapeBlocks();
         }
         else
         {
@@ -36,14 +36,16 @@ public class PlayerWalking : PlayerParent
         }
     }
 
-    public void Step(Vector3 direction, AnimationClip _anim) //Сделать шаг
+    public void Step() //Сделать шаг
     {
+        var direction = CurrentBlock.GetComponent<ArrowScript>().Dir;
+
         if (CollisionPointWith("Floor", direction) && !CollisionPointWith("SolidBarrier", direction)) //есть ли пол?
         {
             myPlayersSolidBlock.transform.position = gameObject.transform.position + direction;
             gameObject.transform.parent.transform.position = gameObject.transform.position;
 
-            ChangeSpriteAndRunAnimation(_anim);
+            ChangeSpriteAndRunAnimation(CurrentBlock.GetComponent<ArrowScript>().AnimClip);
             
             Invoke("StepTime", 1.1f / AllGlobalVariable.overallSpeed);
         }
@@ -67,18 +69,38 @@ public class PlayerWalking : PlayerParent
             StartMoving();
         }
     } 
+    public void JumpToCommand(int i)
+    {
+        Debug.Log("hahahah");
+        CurrentStep = i;
+        StartMoving();
+    }
 
     void StepTime()
     {
         Iam.GetComponent<PlayerReactionOnFloor>().CheckFloorType(myFinishFloorName);
 
         if (!Pause)
-        {
-            //if (currentBlock.GetComponent<ArrowTestScript>().JumpToStep == null)
-            Step(CurrentBlock.GetComponent<ArrowTestScript>().Direction, CurrentBlock.GetComponent<ArrowTestScript>().Animate);
+        { 
+            switch (CurrentBlock.GetComponent<ArrowScript>().Type)
+            {
+                case TypeBlock.Step:
+                    Step();
+                    break;
+
+                case TypeBlock.Jump:
+                    JumpToCommand(1);
+                    break;
+            }
+            
         }
     }
 
+    void ReshapeBlocks()
+    {
+        ISelectableBlockInMovingBlock reshapeBlock = myMovingBlock.GetComponentInParent<SelectBlockInMovingBlock>();
+        reshapeBlock.SelectingBlockInMovingBlock(MyMovingBlockScript.allArrows, CurrentBlock);
+    }
     void OnDestroy()
     {
         Destroy(myPlayersSolidBlock);

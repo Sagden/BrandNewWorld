@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7672101378489521380}
   - component: {fileID: 7672101378489521381}
   - component: {fileID: -6770415163931126423}
+  - component: {fileID: -710941108620407434}
   m_Layer: 0
   m_Name: ArrowLeft
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 7672101378489521376}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
   m_LocalPosition: {x: -358.1, y: -0, z: -1}
-  m_LocalScale: {x: 30, y: 30, z: -1}
+  m_LocalScale: {x: 30, y: 30, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -108,15 +109,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae635e96b10dafb4bbbf86506e18a1f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisArrowSelect:
-    m_PersistentCalls:
-      m_Calls: []
   arrowPrefab: {fileID: 4022134156506799893, guid: 14eb689a9f0a90e469bb9dfae4ce14b1,
     type: 3}
   notificationPrefab: {fileID: 6176683217360708874, guid: 8ceb687865d7c444ca766f0d4befbe55,
     type: 3}
-  notification: {fileID: 0}
-  canCreateArrowAtClick: 1
+  dir: {x: -0.5, y: 0, z: 0}
+  type: 0
 --- !u!114 &-6770415163931126423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,3 +127,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd0ffd6f72cdcbd468469ccb3577ebc0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!111 &-710941108620407434
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7672101378489521376}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: 3363b0df84a0cf54ab1c89916d0bb34a, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: 3363b0df84a0cf54ab1c89916d0bb34a, type: 2}
+  - {fileID: 7400000, guid: 1f9b893e726645a439b360abe36a4be9, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0

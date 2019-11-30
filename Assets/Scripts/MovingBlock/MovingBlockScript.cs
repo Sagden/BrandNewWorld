@@ -6,13 +6,12 @@ using System;
 
 public class MovingBlockScript : MovingBlockParent
 {
-    public List<string> allArrows;
-    public GameObject testArrow;
     public Animation _animation;
     public string playPauseStatus;
     public GameObject myMovingBlock;
     public string myName;
     public float myOffset;
+
 
     void Start()
     {
@@ -24,28 +23,20 @@ public class MovingBlockScript : MovingBlockParent
 
     public void AddArrow(GameObject arrow)
     {
-        allArrows.Add(arrow.name);
-        RefreshMovingBlock();
+        allArrows.Add(arrow);
+        DrawingArrowOnMovingBlock();
         AllObjectList.Instance.createArrow.ArrowBlockCountChangedMinus(arrow);
     }
 
+
     public void DeleteArrow(GameObject deleteObj)
     {
-        var index = showArrows.IndexOf(deleteObj);
+        var index = allArrows.IndexOf(deleteObj);
 
-        AllObjectList.Instance.createArrow.ArrowBlockCountChangedPlus(allArrows[index]);
-
+        AllObjectList.Instance.createArrow.ArrowBlockCountChangedPlus(allArrows[index].name);
         allArrows.RemoveAt(index);
-        showArrows.RemoveAt(index);
-
         Destroy(deleteObj);
 
-        RefreshMovingBlock();
-    }
-
-    public void RefreshMovingBlock()
-    {
-        ClearList();
         DrawingArrowOnMovingBlock();
     }
 
@@ -55,43 +46,10 @@ public class MovingBlockScript : MovingBlockParent
         for(int i = 0; i < allArrows.Count; i++)
         {
             var offset = i * 0.7f;
-            var obj = Instantiate(testArrow, new Vector3(transform.position.x-2+offset, Camera.main.transform.position.y+myOffset, -1), Quaternion.identity, gameObject.transform);
-            var objScript = obj.GetComponent<ArrowTestScript>();
 
-            if (i+1 == allArrows.Count)      //перемещение камеры в movingblock к последнему элементу
-                myMovingBlock.GetComponent<MovingBlockScrolling>().OffsetAddArrow(obj);
-
-            switch (allArrows[i])
-            {
-                case "ArrowRight(Clone)": 
-                obj.transform.rotation = new Quaternion(0,0,0,0); 
-                objScript.Direction = new Vector2(0.5f, 0);
-                objScript.Animate = _animation.GetClip("PlayerAnimationRight");
-                break;
-
-                case "ArrowUp(Clone)": 
-                obj.transform.rotation = new Quaternion(0,0,1,1); 
-                objScript.Direction = new Vector2(0, 0.5f);
-                objScript.Animate = _animation.GetClip("PlayerAnimationUp");
-                break;
-
-                case "ArrowLeft(Clone)": 
-                obj.transform.rotation = new Quaternion(0,0,1,0); 
-                objScript.Direction = new Vector2(-0.5f, 0);
-                objScript.Animate = _animation.GetClip("PlayerAnimationLeft");
-                break;
-                
-                case "ArrowDown(Clone)": 
-                obj.transform.rotation = new Quaternion(0,0,1,-1); 
-                objScript.Direction = new Vector2(0, -0.5f);
-                objScript.Animate = _animation.GetClip("PlayerAnimationDown");
-                break; 
-
-                case "ArrowJump(Clone)": 
-                objScript.JumpToStep = 1;
-                break; 
-            }
-            showArrows.Add(obj);
+            allArrows[i].transform.position = new Vector3(transform.position.x-2+offset, Camera.main.transform.position.y+myOffset, -1);
+            allArrows[i].GetComponent<ArrowScript>().IamInMovingBlock = true;
+            allArrows[i].transform.SetParent(gameObject.transform);
         }
     }
 }

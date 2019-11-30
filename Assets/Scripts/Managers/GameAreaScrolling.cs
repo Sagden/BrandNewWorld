@@ -8,7 +8,6 @@ public class GameAreaScrolling : MonoBehaviour
     private bool banOnScroll = false;
     private Vector3 startMouseCoordinate;
     private Vector3 startCameraCoordinate;
-
     [SerializeField] private Vector3 differentMouseCoordinate;
 
     void Start()

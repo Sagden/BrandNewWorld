@@ -4,19 +4,11 @@ using UnityEngine;
 
 public class ArrowTestScript : MonoBehaviour
 {
-    [SerializeField]private Vector3 direction;
-    [SerializeField]private AnimationClip animate;
     [SerializeField]private bool canDelete = true;
-    private int jumpToStep;
     private CollisionEvents collisionEvents;
     private bool playerIsStop = true;
     public SpriteRenderer spriteRenderer;
     public GameObject currentPlayer;
-    public bool myHeroStart;
-
-    public Vector2 Direction { get => direction; set => direction = value; }
-    public AnimationClip Animate { get => animate; set => animate = value; }
-    public int JumpToStep { get => jumpToStep; set => jumpToStep = value; }
 
     void Start()
     {
@@ -40,11 +32,8 @@ public class ArrowTestScript : MonoBehaviour
     {
         if (canDelete)
         {
-            if (!AllGlobalVariable.Instance.GetStartedWalking(currentPlayer))
-            {
-                collisionEvents.CollisionWithTag("MovingBlock", Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y))).GetComponent<MovingBlockScript>().DeleteArrow(gameObject);
-            }
-            else
+            
+           // else
             {
                 AllObjectList.Instance.stopScript.Shake();
             }

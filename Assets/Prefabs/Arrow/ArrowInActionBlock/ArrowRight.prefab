@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3634826864742968326}
   - component: {fileID: 2510068434434655950}
   - component: {fileID: 4657735188992748630}
+  - component: {fileID: 7190787104478699006}
   m_Layer: 0
   m_Name: ArrowRight
   m_TagString: Untagged
@@ -114,15 +115,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae635e96b10dafb4bbbf86506e18a1f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisArrowSelect:
-    m_PersistentCalls:
-      m_Calls: []
   arrowPrefab: {fileID: 4022134156506799893, guid: 2e20d7a7646ab124cbd318e9bbadd567,
     type: 3}
   notificationPrefab: {fileID: 6176683217360708874, guid: 8ceb687865d7c444ca766f0d4befbe55,
     type: 3}
-  notification: {fileID: 0}
-  canCreateArrowAtClick: 1
+  dir: {x: 0.5, y: 0, z: 0}
+  type: 0
 --- !u!114 &2510068434434655950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,3 +141,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3634826864742968325}
   m_CullTransparentMesh: 0
+--- !u!111 &7190787104478699006
+Animation:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3634826864742968325}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Animation: {fileID: 7400000, guid: e05ee2b72f425a049a5deaebe176d275, type: 2}
+  m_Animations:
+  - {fileID: 7400000, guid: e05ee2b72f425a049a5deaebe176d275, type: 2}
+  - {fileID: 7400000, guid: 1f9b893e726645a439b360abe36a4be9, type: 2}
+  m_WrapMode: 0
+  m_PlayAutomatically: 0
+  m_AnimatePhysics: 0
+  m_CullingType: 0

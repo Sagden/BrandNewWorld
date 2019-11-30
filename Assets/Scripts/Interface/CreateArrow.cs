@@ -6,10 +6,9 @@ using UnityEngine.Serialization;
 [System.Serializable]
 public class BoolArrowCheck
 {
-    public int arrowNumber;
-    public GameObject arrow;
+    public int commandNumber;
+    public GameObject command;
     public GameObject id;
-    public string idName;
 }
 
 public class CreateArrow : MonoBehaviour
@@ -18,24 +17,22 @@ public class CreateArrow : MonoBehaviour
 
     void Start()
     {
-        RefreshArrowBlock();
+        CreateArrowBlock();
     }
 
-    public void RefreshArrowBlock()
+    public void CreateArrowBlock()
     {
-        ClearArrowBlock();
-
         var offset = 0f;
 
         foreach(BoolArrowCheck obj in arrowList)
         {
-            if (obj.arrowNumber > 0)
+            if (obj.commandNumber > 0)
             {
-                obj.id = Instantiate(obj.arrow, new Vector3(Camera.main.transform.position.x-2+offset, Camera.main.transform.position.y-4.1f, -1), obj.arrow.transform.rotation, gameObject.transform);
-                obj.id.GetComponent<ArrowScript>().notification.GetComponentInChildren<Transform>().GetComponentInChildren<TextMesh>().text = obj.arrowNumber.ToString();
-                obj.idName = obj.id.name;
+                obj.id = Instantiate(obj.command, new Vector3(Camera.main.transform.position.x-2+offset, Camera.main.transform.position.y-4.1f, -1), obj.command.transform.rotation, gameObject.transform);
+                obj.id.GetComponent<ArrowScript>().Notification.GetComponentInChildren<Transform>().GetComponentInChildren<TextMesh>().text = obj.commandNumber.ToString();
                 offset += 0.7f;
             }
+            
         }
     }
 
@@ -43,7 +40,11 @@ public class CreateArrow : MonoBehaviour
     {
         foreach(BoolArrowCheck obj in arrowList)
         {
-            //if (obj.arrowNumber == 0 && obj.id != null)
+            if (obj.id.GetComponent<ArrowScript>().IamInMovingBlock)
+            {
+                Destroy(obj.id.GetComponent<ArrowScript>().Notification);
+            }
+            else
             if (obj.id != null)
             {
                 Destroy(obj.id);
@@ -55,10 +56,11 @@ public class CreateArrow : MonoBehaviour
     {
         foreach(BoolArrowCheck obj in arrowList)
         {
-            if (obj.id == arrowObj && obj.arrowNumber > 0)
+            if (obj.id == arrowObj && obj.commandNumber > 0)
             {
-                obj.arrowNumber -= 1;
-                RefreshArrowBlock();
+                obj.commandNumber -= 1;
+                ClearArrowBlock();
+                CreateArrowBlock();
             }
         }
     }
@@ -67,10 +69,11 @@ public class CreateArrow : MonoBehaviour
     {
         foreach(BoolArrowCheck obj in arrowList)
         {
-            if (obj.idName == arrowObj)
+            if (obj.id.name == arrowObj)
             {
-                obj.arrowNumber += 1;
-                RefreshArrowBlock();
+                obj.commandNumber += 1;
+                ClearArrowBlock();
+                CreateArrowBlock();
             }
         }
     }
