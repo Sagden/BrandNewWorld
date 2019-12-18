@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: b3c6fe1dd2de1ca49a8a71b1630a7078, type: 3}
-  m_Color: {r: 0.8207547, g: 0.60008013, b: 0.6170551, a: 1}
+  m_Color: {r: 0.9622642, g: 0.6853863, b: 0.70668465, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 1
@@ -110,10 +110,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9e0be050f2aae54a871f0a0cb0adc7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  showArrows: []
   allArrows: []
-  testArrow: {fileID: 4022134156506799893, guid: e6e3e48204431724ca1229704b404279,
-    type: 3}
   _animation: {fileID: 0}
   playPauseStatus: 
   myMovingBlock: {fileID: 0}

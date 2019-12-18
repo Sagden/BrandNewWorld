@@ -18,7 +18,7 @@ public class SliderScript : MonoBehaviour
 
     public void OverallSpeedChanged()
     {
-        AllGlobalVariable.overallSpeed = slider.value;
+        AllGlobalVariable.Instance.overallSpeed = slider.value;
     }
 
     void InitSlider()

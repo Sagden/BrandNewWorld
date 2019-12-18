@@ -23,33 +23,34 @@ public class MovingBlockScript : MovingBlockParent
 
     public void AddArrow(GameObject arrow)
     {
-        allArrows.Add(arrow);
+        allCommands.Add(arrow);
         DrawingArrowOnMovingBlock();
-        AllObjectList.Instance.createArrow.ArrowBlockCountChangedMinus(arrow);
     }
 
 
     public void DeleteArrow(GameObject deleteObj)
     {
-        var index = allArrows.IndexOf(deleteObj);
+        var index = allCommands.IndexOf(deleteObj);
 
-        AllObjectList.Instance.createArrow.ArrowBlockCountChangedPlus(allArrows[index].name);
-        allArrows.RemoveAt(index);
+        allCommands.RemoveAt(index);
         Destroy(deleteObj);
 
         DrawingArrowOnMovingBlock();
     }
 
 
-    void DrawingArrowOnMovingBlock()
+    public void DrawingArrowOnMovingBlock()
     {
-        for(int i = 0; i < allArrows.Count; i++)
+        for(int i = 0; i < allCommands.Count; i++)
         {
             var offset = i * 0.7f;
-
-            allArrows[i].transform.position = new Vector3(transform.position.x-2+offset, Camera.main.transform.position.y+myOffset, -1);
-            allArrows[i].GetComponent<ArrowScript>().IamInMovingBlock = true;
-            allArrows[i].transform.SetParent(gameObject.transform);
+            
+            allCommands[i].transform.position = new Vector3(transform.position.x-2+offset, Camera.main.transform.position.y+myOffset, -1);
+            allCommands[i].transform.SetParent(gameObject.transform);
+            if (allCommands[i].GetComponent<ActionBlockAbstract>()?.IamInMovingBlock == false)
+            {
+                allCommands[i].GetComponent<ActionBlockAbstract>().IamInMovingBlock = true;
+            }
         }
     }
 }

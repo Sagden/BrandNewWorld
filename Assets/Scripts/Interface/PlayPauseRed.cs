@@ -7,7 +7,7 @@ public class PlayPauseRed : MonoBehaviour
 {
     public Button button;
     public GameObject player;
-    public PlayerWalking playerScript;
+    public PlayerMovement playerScript;
     public string status;
 
     void Awake()
@@ -24,7 +24,7 @@ public class PlayPauseRed : MonoBehaviour
         button = transform.GetComponent<Button>();
 
         button.onClick.AddListener(ClickOnButton);
-        playerScript.myEventFinish.AddListener(WalkingFinished);
+        playerScript.FinishPlayerMovement.AddListener(WalkingFinished);
         AllEventList.Instance.playersIsCreate.AddListener(PlayerInit);
     }
 
@@ -32,13 +32,13 @@ public class PlayPauseRed : MonoBehaviour
 
     void ClickOnButton()
     {
-        if (status == "Play" && !playerScript.AnimationPlayer.isPlaying)
+        if (status == "Play" && !AllObjectList.Instance.bluePlayerObj.GetComponent<PlayerMovementAnimation>().AnimationComponent.isPlaying)
         {
             status = "Pause";
             gameObject.GetComponent<Image>().sprite = AllObjectList.Instance.pauseButtonSprite;
 
             playerScript.Pause = false;
-            playerScript.StartMoving();
+            playerScript.StartMovement();
         }
         else
             if (status == "Pause")
@@ -62,7 +62,7 @@ public class PlayPauseRed : MonoBehaviour
 
     public void PlayerInit()
     {
-        playerScript = AllObjectList.Instance.redPlayerObj.GetComponent<PlayerWalking>();
+        playerScript = AllObjectList.Instance.redPlayerObj.GetComponent<PlayerMovement>();
     }
 
 }

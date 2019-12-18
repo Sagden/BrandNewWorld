@@ -53,10 +53,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\ArrowDecorationBehaviour.cs" />
      <Compile Include="Assets\Scripts\ArrowTestScript.cs" />
      <Compile Include="Assets\Scripts\ChangeColorBluePlayer.cs" />
      <Compile Include="Assets\Scripts\ChangeColorRedPlayer.cs" />
      <Compile Include="Assets\Scripts\CollisionEvents.cs" />
+     <Compile Include="Assets\Scripts\CreateJumpBlock.cs" />
      <Compile Include="Assets\Scripts\CurrentLevelTextBehavior.cs" />
      <Compile Include="Assets\Scripts\Floor\StartFloorBlue.cs" />
      <Compile Include="Assets\Scripts\Floor\StartFloorParent.cs" />
@@ -64,6 +66,8 @@
      <Compile Include="Assets\Scripts\Interface\ActionBlockAbstract.cs" />
      <Compile Include="Assets\Scripts\Interface\ArrowPrefab.cs" />
      <Compile Include="Assets\Scripts\Interface\ArrowScript.cs" />
+     <Compile Include="Assets\Scripts\Interface\ArrowScriptEmpty.cs" />
+     <Compile Include="Assets\Scripts\Interface\ArrowScriptJump.cs" />
      <Compile Include="Assets\Scripts\Interface\BehaviorLikeUI.cs" />
      <Compile Include="Assets\Scripts\Interface\CreateArrow.cs" />
      <Compile Include="Assets\Scripts\Interface\FinishLevelWindow.cs" />
@@ -75,7 +79,6 @@
      <Compile Include="Assets\Scripts\Interface\PlayPauseRed.cs" />
      <Compile Include="Assets\Scripts\Interface\SelectBlockInMovingBlock.cs" />
      <Compile Include="Assets\Scripts\Interface\StopScript.cs" />
-     <Compile Include="Assets\Scripts\LogScript.cs" />
      <Compile Include="Assets\Scripts\Managers\AllEventList.cs" />
      <Compile Include="Assets\Scripts\Managers\AllGlobalVariable.cs" />
      <Compile Include="Assets\Scripts\Managers\AllObjectList.cs" />
@@ -85,10 +88,10 @@
      <Compile Include="Assets\Scripts\MovingBlock\MovingBlockScript.cs" />
      <Compile Include="Assets\Scripts\MovingBlock\MovingBlockScrolling.cs" />
      <Compile Include="Assets\Scripts\MovingBlock\MovingBlockScrollingParent.cs" />
-     <Compile Include="Assets\Scripts\Player\PlayerParent.cs" />
+     <Compile Include="Assets\Scripts\Player\Player.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerMovement.cs" />
+     <Compile Include="Assets\Scripts\Player\PlayerMovementAnimation.cs" />
      <Compile Include="Assets\Scripts\Player\PlayerReactionOnFloor.cs" />
-     <Compile Include="Assets\Scripts\Player\PlayerSpriteDrawing.cs" />
-     <Compile Include="Assets\Scripts\Player\PlayerWalking.cs" />
      <Compile Include="Assets\Scripts\SliderScript.cs" />
  <Reference Include="Unity.Timeline.Editor">
  <HintPath>E:/UnityProjects/BrandNewWorld/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>

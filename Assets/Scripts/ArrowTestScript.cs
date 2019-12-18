@@ -17,8 +17,8 @@ public class ArrowTestScript : MonoBehaviour
 
         Init();
 
-        currentPlayer.GetComponent<PlayerWalking>().myEventStart.AddListener(ChangeColor);
-        currentPlayer.GetComponent<PlayerWalking>().myEventFinish.AddListener(ChangeColorOnWhite);
+        currentPlayer.GetComponent<PlayerMovement>().StartPlayerMovement.AddListener(ChangeColor);
+        currentPlayer.GetComponent<PlayerMovement>().FinishPlayerMovement.AddListener(ChangeColorOnWhite);
         AllEventList.Instance.stopButtonClick.AddListener(ChangeColorOnWhite);
         AllEventList.Instance.stopButtonClick.AddListener(Init);
     }
@@ -32,8 +32,6 @@ public class ArrowTestScript : MonoBehaviour
     {
         if (canDelete)
         {
-            
-           // else
             {
                 AllObjectList.Instance.stopScript.Shake();
             }
@@ -41,16 +39,11 @@ public class ArrowTestScript : MonoBehaviour
         canDelete = true;
     }
 
-    void ChangeCanDeleteStatus()
-    {
-        if (!AllGlobalVariable.Instance.GetStartedWalking(currentPlayer))
-            canDelete = false;
-    }
     void ChangeColor()
     {
         spriteRenderer.color = new Color32(110,110,110,255);
 
-        currentPlayer.GetComponent<PlayerWalking>().CurrentBlock.GetComponent<SpriteRenderer>().color = new Color32(255,255,255,255);
+        currentPlayer.GetComponent<PlayerMovement>().CurrentCommand.GetComponent<SpriteRenderer>().color = new Color32(255,255,255,255);
     }
 
     void ChangeColorOnWhite()

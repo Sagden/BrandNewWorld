@@ -3,27 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-enum TypeBlock
-{
-    Step,
-    Jump
-}
+
 public class ArrowScript : ActionBlockAbstract
 {
     private UnityEvent thisArrowSelect = new UnityEvent();
     public GameObject arrowPrefab;
     public GameObject notificationPrefab;
-    private GameObject notification;
     private AnimationClip animClip;
-    private bool canDelete = true;
+    [SerializeField]protected TypeBlock type;
+
     [SerializeField] private Vector3 dir;
-    [SerializeField] private TypeBlock type;
-    public bool showStatus = true;
 
     public AnimationClip AnimClip { get => animClip; set => animClip = value; }
     public Vector3 Dir { get => dir; set => dir = value; }
     internal TypeBlock Type { get => type; set => type = value; }
-    public GameObject Notification { get => notification; set => notification = value; }
 
     void Awake()
     {
@@ -31,10 +24,11 @@ public class ArrowScript : ActionBlockAbstract
     }
     void Init()
     {
+        TypeParent = type;
+
         if (gameObject.GetComponent<Animation>() != null)
             AnimClip = gameObject.GetComponent<Animation>().clip;
-            
-        Notification = Instantiate(notificationPrefab, new Vector3(transform.position.x + 0.2f, transform.position.y + 0.2f, -1), Quaternion.identity);
+            Notification = Instantiate(notificationPrefab, new Vector3(transform.position.x + 0.2f, transform.position.y + 0.2f, -5), Quaternion.identity);
     }
 
     void OnMouseDown()
@@ -48,22 +42,14 @@ public class ArrowScript : ActionBlockAbstract
         else
         if (IamInMovingBlock)
         {
+            canDelete = true;
             Invoke("ChangeCanDeleteStatus", 0.2f);
         }
     }
 
     void OnMouseUp()
     {
-        if (IamInMovingBlock)
-        {
-            //if (!AllGlobalVariable.Instance.GetStartedWalking(currentPlayer))
-            if (canDelete)
-            {
-                collisionEvents.CollisionWithTag("MovingBlock").GetComponent<MovingBlockScript>().DeleteArrow(gameObject);
-            }
-
-            canDelete = true;
-        }
+        DeleteArrow();
     }
 
     void Update()
@@ -75,23 +61,33 @@ public class ArrowScript : ActionBlockAbstract
         }
     }
 
-    public override void AddArrowToMovingBlock()
+    public void AddArrowToMovingBlock()
     {
 
         if ((collisionEvents.CollisionWithTag("MovingBlock") && (collisionEvents.CollisionWithTag("MovingBlock").GetComponent<MovingBlockScript>().playPauseStatus == "Play"))) //AllObjectList.Instance.playPauseScript.status == "Play") // || (canCreateArrowAtClick == true)
             {
-                collisionEvents.CollisionWithTag("MovingBlock").GetComponent<MovingBlockScript>().AddArrow(SelectArrow);
+                if (!AllGlobalVariable.Instance.HeroBlueStartedWalking)
+                {
+                    collisionEvents.CollisionWithTag("MovingBlock").GetComponent<MovingBlockScript>().AddArrow(SelectArrow);
+                    AllObjectList.Instance.createArrow.ArrowBlockCountChangedMinus(SelectArrow);
+                }
+                else
+                {
+                    AllObjectList.Instance.stopScript.Shake();
+                }
             }
             
         Destroy(prefabObject);
         SelectArrow = null;
-    }
+    } 
     void ChangeCanDeleteStatus()
     {
         canDelete = false;
     }
     void OnDestroy()
     {
+        var parent = GetComponent<CreateJumpBlock>()?.IdArrowFinish?.transform.parent;
+
         Destroy(Notification);
     }
 }

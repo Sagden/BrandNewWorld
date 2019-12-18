@@ -14,8 +14,7 @@ public class AllEventList : MonoBehaviour
 //----------------------- SINGLETONE---------------------------//
 
 
-    public UnityEvent bluePlayerOnFinishFloor = new UnityEvent();
-    public UnityEvent redPlayerOnFinishFloor = new UnityEvent();
+    public UnityEvent allPlayersOnFinishFloor;
     public UnityEvent speedSliderIsChanged = new UnityEvent();
     public UnityEvent walkingFinishedBlue = new UnityEvent(); // Когда прошел все команды
     public UnityEvent walkingFinishedRed = new UnityEvent(); // Когда прошел все команды

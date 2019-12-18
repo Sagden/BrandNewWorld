@@ -10,7 +10,7 @@ public class ChangeColorBluePlayer : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private float rStart, gStart, bStart;
     private float rFinish, gFinish, bFinish;
-    private float rCurrent, gCurrent, bCurrent;
+    [SerializeField]private float rCurrent, gCurrent, bCurrent;
     private Color rgbStart;
 
     void Start()
@@ -26,9 +26,9 @@ public class ChangeColorBluePlayer : MonoBehaviour
         gStart = spriteRenderer.color.g;
         bStart = spriteRenderer.color.b;
         
-        rFinish = 80f / 256f;
-        gFinish = 86f / 256f;
-        bFinish = 130f / 256f;
+        rFinish = blueFinishFloor.GetComponent<SpriteRenderer>().color.r;
+        gFinish = blueFinishFloor.GetComponent<SpriteRenderer>().color.g;
+        bFinish = blueFinishFloor.GetComponent<SpriteRenderer>().color.b;
     }
     void FixedUpdate()
     {   

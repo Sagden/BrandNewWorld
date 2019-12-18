@@ -28,13 +28,13 @@ public class StartFloorRed : StartFloorParent
     }
     public void InitRedPlayer()
     {
-        var path = AllObjectList.Instance.redPlayerObj.GetComponent<PlayerWalking>();
+        var path = AllObjectList.Instance.redPlayerObj.GetComponent<PlayerMovement>();
 
             path.MyMovingBlockScript = AllObjectList.Instance.movingBlockRed.GetComponent<MovingBlockScript>();
             path.myFinishFloorName = "RedRobotFinishFloor";
             path.Iam = AllObjectList.Instance.redPlayerObj;
             path.MyMovingBlock = AllObjectList.Instance.movingBlockRed;
-            path.myEventStart = AllEventList.Instance.startMovingEventRed;
-            path.myEventFinish = AllEventList.Instance.walkingFinishedRed;
+            path.StartPlayerMovement = AllEventList.Instance.startMovingEventRed;
+            path.FinishPlayerMovement = AllEventList.Instance.walkingFinishedRed;
     }
 }

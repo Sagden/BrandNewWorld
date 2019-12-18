@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 1875933540754927149}
   - component: {fileID: 7329429393495173127}
   - component: {fileID: 2266950190993679715}
-  - component: {fileID: 6386194489319599165}
   - component: {fileID: 5422343221242569536}
+  - component: {fileID: -3913734536915082565}
   - component: {fileID: 7651165649760946224}
   - component: {fileID: -3806688100078922798}
   - component: {fileID: 4532268956870384005}
@@ -118,22 +118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff9f43ac82e73484c80a9afa1639c69f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6386194489319599165
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1875933540754927150}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: acc74ed105e680d4eb782fe287ae35d5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spriteRight: {fileID: 21300000, guid: ae2294f95c092584abee3587ac8bfbfa, type: 3}
-  spriteLeft: {fileID: 21300000, guid: ae2294f95c092584abee3587ac8bfbfa, type: 3}
-  spriteUp: {fileID: 21300000, guid: ae2294f95c092584abee3587ac8bfbfa, type: 3}
-  spriteDown: {fileID: 21300000, guid: ae2294f95c092584abee3587ac8bfbfa, type: 3}
 --- !u!114 &5422343221242569536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,18 +130,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8353842c84cdc6247b0c1b99a50dde53, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distance: 0
-  maxDistance: 0
-  redFinishFloor: {fileID: 0}
-  rStart: 0
-  gStart: 0
-  bStart: 0
-  rFinish: 0
-  gFinish: 0
-  bFinish: 0
-  rCurrent: 0
-  gCurrent: 0
-  bCurrent: 0
+--- !u!114 &-3913734536915082565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1875933540754927150}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fa6a39e870dceb48965465523aaa4ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!111 &7651165649760946224
 Animation:
   m_ObjectHideFlags: 0

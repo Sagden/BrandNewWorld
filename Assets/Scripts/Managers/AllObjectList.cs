@@ -48,6 +48,8 @@ public class AllObjectList : MonoBehaviour
 
     public Sprite playButtonSprite;
     public Sprite pauseButtonSprite;
+
+    public GameObject checkMark;
     
 
     void Awake()
@@ -71,8 +73,8 @@ public class AllObjectList : MonoBehaviour
         movingBlockRed = GameObject.Find("MovingBlockRed");
         blueRobotStartFloor = GameObject.Find("BlueRobotStartFloor");
         redRobotStartFloor = GameObject.Find("RedRobotStartFloor");
-        blueRobotFinishFloor = GameObject.Find("RedRobotFinishFloor");
-        redRobotFinishFloor = GameObject.Find("BlueRobotFinishFloor");
+        blueRobotFinishFloor = GameObject.Find("BlueRobotFinishFloor");
+        redRobotFinishFloor = GameObject.Find("RedRobotFinishFloor");
     
 
 

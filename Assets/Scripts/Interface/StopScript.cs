@@ -16,7 +16,7 @@ public class StopScript : MonoBehaviour
         anim = GetComponent<Animation>();
 
         stopButton.onClick.AddListener(ClickOnButton);
-        AllEventList.Instance.bluePlayerOnFinishFloor.AddListener(BanOnStopClick);
+        AllEventList.Instance.allPlayersOnFinishFloor.AddListener(BanOnStopClick);
     }
 
 

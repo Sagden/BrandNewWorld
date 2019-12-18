@@ -5,6 +5,7 @@ using UnityEngine;
 public class AllGlobalVariable : MonoBehaviour
 {
     public static AllGlobalVariable Instance {get; set;}
+
     void Awake()
     {
         if (Instance == null)
@@ -12,43 +13,38 @@ public class AllGlobalVariable : MonoBehaviour
     }
 //----------------------- SINGLETONE---------------------------//
 
-    public static float overallSpeed = 1.5f;
-    public static bool heroBlueStartedWalking = false;
-    public static bool heroRedStartedWalking = false;
+    public float overallSpeed = 1.5f;
+
+    private bool heroBlueStartedWalking = false;
+    public bool HeroBlueStartedWalking { get => heroBlueStartedWalking; set => heroBlueStartedWalking = value; }
+    
+    private bool heroRedStartedWalking = false;
+    public bool HeroRedStartedWalking { get => heroRedStartedWalking; set => heroRedStartedWalking = value; }
+
+    private  bool bluePlayerOnFinishFloor;
+    public  bool BluePlayerOnFinishFloor { get => bluePlayerOnFinishFloor; set => bluePlayerOnFinishFloor = value; }
+
+    private bool redPlayerOnFinishFloor;
+    public bool RedPlayerOnFinishFloor { get => redPlayerOnFinishFloor; set => redPlayerOnFinishFloor = value; }
+
+    private  bool allObjectsOnFinishFloor;
+    public bool AllObjectsOnFinishFloor { get => allObjectsOnFinishFloor; set => allObjectsOnFinishFloor = value; }
 
     void Start()
     {
-        heroBlueStartedWalking = false;
-        heroRedStartedWalking = false;
+        AllEventList.Instance.startMovingEventBlue.AddListener(delegate {HeroBlueStartedWalking = true;});
+        AllEventList.Instance.startMovingEventRed.AddListener(delegate {HeroRedStartedWalking = true;});
 
-        AllEventList.Instance.startMovingEventBlue.AddListener(delegate {heroBlueStartedWalking = true;});
-        AllEventList.Instance.startMovingEventRed.AddListener(delegate {heroRedStartedWalking = true;});
-
-        AllEventList.Instance.stopButtonClick.AddListener(delegate {heroBlueStartedWalking = false;});
-        AllEventList.Instance.stopButtonClick.AddListener(delegate {heroRedStartedWalking = false;});
+        AllEventList.Instance.stopButtonClick.AddListener(delegate {HeroBlueStartedWalking = false;});
+        AllEventList.Instance.stopButtonClick.AddListener(delegate {HeroRedStartedWalking = false;});
     }
 
-
-    public bool GetStartedWalking(GameObject obj)
-    {
-        if (obj.name == "PlayerBlue(Clone)")
-        {
-            return heroBlueStartedWalking;
-        }
-        else
-        if (obj.name == "PlayerRed(Clone)")
-        {
-            return heroRedStartedWalking;
-        }
-
-        return false;
-    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            Debug.Log("Blue: " + heroBlueStartedWalking);
-            Debug.Log("Red: " + heroRedStartedWalking);
+            Debug.Log("Blue: " + bluePlayerOnFinishFloor);
+            Debug.Log("Red: " + redPlayerOnFinishFloor);
         }
     }
 }

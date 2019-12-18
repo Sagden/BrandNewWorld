@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class ChangeColorRedPlayer : MonoBehaviour
 {
-    [SerializeField] private float distance;
-    [SerializeField]private float maxDistance;
-    [SerializeField] private GameObject redFinishFloor;
+    private float distance;
+    private float maxDistance;
+    private GameObject redFinishFloor;
     private SpriteRenderer spriteRenderer;
-    [SerializeField] private float rStart, gStart, bStart;
-    [SerializeField] private float rFinish, gFinish, bFinish;
-    [SerializeField] private float rCurrent, gCurrent, bCurrent;
+    private float rStart, gStart, bStart;
+    private float rFinish, gFinish, bFinish;
+    private float rCurrent, gCurrent, bCurrent;
     private Color rgbStart;
 
     void Start()
@@ -26,9 +26,9 @@ public class ChangeColorRedPlayer : MonoBehaviour
         gStart = spriteRenderer.color.g;
         bStart = spriteRenderer.color.b;
         
-        rFinish = 111f / 256f;
-        gFinish = 69f / 256f;
-        bFinish = 73f / 256f;
+        rFinish = redFinishFloor.GetComponent<SpriteRenderer>().color.r;
+        gFinish = redFinishFloor.GetComponent<SpriteRenderer>().color.g;
+        bFinish = redFinishFloor.GetComponent<SpriteRenderer>().color.b;
     }
     void FixedUpdate()
     {   
