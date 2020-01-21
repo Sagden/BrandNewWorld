@@ -2,35 +2,61 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum TypeBlock
+{
+    Step,
+    Jump,
+    Empty
+}
+
 public abstract class ActionBlockAbstract : MonoBehaviour
 {
-    public static GameObject selectArrow = null;
+    protected bool canDelete = true;
+    protected CollisionEvents collisionEventsComponent;
 
-    public static bool banOnArrowDrag = false;
-
+    public static bool banOnTakingCommandBlock = false;
+    public bool showStatus = true;
     public static GameObject prefabObject;
+
+    public static GameObject SelectedCommand { get; set; } = null;
+    public GameObject Notification { get; set; }
+    public bool IamInMovingBlock { get; set; }
+    public TypeBlock TypeParent { get; set; }
 
     void Start()
     {
-        banOnArrowDrag = false;
+        collisionEventsComponent = GetComponent<CollisionEvents>();
+        banOnTakingCommandBlock = false;
 
-        AllEventList.Instance.firstPlayerOnFinishFloor.AddListener(BanOnArrowDrag);
+        AllEventList.Instance.allPlayersOnFinishFloor.AddListener(BanOnTakingCommandBlock);
     }
-
-    public abstract void AddArrowToMovingBlock();
-
-
-    void BanOnArrowDrag()
+ 
+    void BanOnTakingCommandBlock()
     {
-        banOnArrowDrag = true;
+        banOnTakingCommandBlock = true;
     }
-    public GameObject CollisionMouseWith(string objName)  //Смотрит все объекты под курсором, проверяет есть ли нужный
+    
+    public virtual void DeleteArrow()
     {
-        foreach(Collider2D s in Physics2D.OverlapPointAll(Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y))))
+        if (IamInMovingBlock && !collisionEventsComponent.CollisionWithTag("ButtonPlay"))
         {
-            if (s.tag == objName)
-                return s.gameObject;
+            if (!MyHeroIsStarted())
+                if (canDelete)
+                {
+                    collisionEventsComponent.CollisionWithTag("MovingBlock").GetComponent<MovingBlockScript>().DeleteArrow(gameObject);
+                    AllObjectList.Instance.createArrow.AddCommandToCommandStorage(gameObject);
+                }
+            canDelete = true;
         }
-        return null;
+    }
+
+    public bool MyHeroIsStarted()
+    {
+        switch(transform.parent.name)
+        {
+            case "MovingBlockBlue(Clone)": return AllGlobalVariable.Instance.HeroBlueStartedWalking;
+            case "MovingBlockRed(Clone)": return AllGlobalVariable.Instance.HeroRedStartedWalking;
+            default: return false;
+        }
     }
 }

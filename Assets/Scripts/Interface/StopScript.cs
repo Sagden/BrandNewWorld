@@ -16,7 +16,7 @@ public class StopScript : MonoBehaviour
         anim = GetComponent<Animation>();
 
         stopButton.onClick.AddListener(ClickOnButton);
-        AllEventList.Instance.firstPlayerOnFinishFloor.AddListener(BanOnStopClick);
+        AllEventList.Instance.allPlayersOnFinishFloor.AddListener(BanOnStopClick);
     }
 
 
@@ -29,15 +29,20 @@ public class StopScript : MonoBehaviour
             Destroy(GameObject.Find("PlayerParent(Clone)"));
             Destroy(GameObject.Find("PlayerParent(Clone)"));
 
-            
-            AllObjectList.Instance.firstRobotStartFloor.GetComponent<StartFloorScript>().InitPlayer();
-            AllObjectList.Instance.secondRobotStartFloor.GetComponent<StartFloorScript>().InitPlayer();
-            AllObjectList.Instance.buttonPlayBlue.GetComponent<PlayPauseScript>().WalkingPaused();
-            AllObjectList.Instance.buttonPlayRed.GetComponent<PlayPauseScript>().WalkingPaused();
-
 
             AllEventList.Instance.stopButtonClick.Invoke();
-            AllEventList.Instance.playersIsCreate.Invoke();
+
+            
+
+            try
+            {
+                AllObjectList.Instance.buttonPlayBlue.GetComponent<PlayPauseBlue>().WalkingPaused();
+                AllObjectList.Instance.buttonPlayRed.GetComponent<PlayPauseRed>().WalkingPaused();
+            }
+            catch
+            {
+                Debug.Log("Error");
+            }
         }
     }
 

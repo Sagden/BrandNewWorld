@@ -3,29 +3,53 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+
 public class ArrowScript : ActionBlockAbstract
 {
-    public UnityEvent thisArrowSelect = new UnityEvent();
+    private UnityEvent thisArrowSelect = new UnityEvent();
     public GameObject arrowPrefab;
-    public GameObject notificationPrefab, notification;
+    public GameObject notificationPrefab;
+    private AnimationClip animClip;
+    [SerializeField]protected TypeBlock type;
 
-    public bool canCreateArrowAtClick = true;
-    
+    [SerializeField] private Vector3 dir;
+
+    public AnimationClip AnimClip { get => animClip; set => animClip = value; }
+    public Vector3 Dir { get => dir; set => dir = value; }
+    internal TypeBlock Type { get => type; set => type = value; }
+
     void Awake()
     {
-        notification = Instantiate(notificationPrefab, new Vector3(transform.position.x + 0.2f, transform.position.y + 0.2f, -1), Quaternion.identity);
+        Init();
+    }
+    void Init()
+    {
+        TypeParent = type;
+
+        if (gameObject.GetComponent<Animation>() != null)
+            AnimClip = gameObject.GetComponent<Animation>().clip;
+            Notification = Instantiate(notificationPrefab, new Vector3(transform.position.x + 0.2f, transform.position.y + 0.2f, -5), Quaternion.identity);
     }
 
     void OnMouseDown()
     {
-        if (!banOnArrowDrag)
+        if (!banOnTakingCommandBlock && !IamInMovingBlock)
         {
-            canCreateArrowAtClick = true;
-            Invoke("CanCreateArrowAtClick", 0.3f);
-            selectArrow = gameObject;
+            SelectedCommand = gameObject;
             prefabObject = Instantiate(arrowPrefab, new Vector3(0,0,-1), transform.rotation);
             thisArrowSelect.AddListener(AddArrowToMovingBlock);
         }
+        else
+        if (IamInMovingBlock)
+        {
+            canDelete = true;
+            Invoke("ChangeCanDeleteStatus", 0.2f);
+        }
+    }
+
+    void OnMouseUp()
+    {
+        DeleteArrow();
     }
 
     void Update()
@@ -37,24 +61,39 @@ public class ArrowScript : ActionBlockAbstract
         }
     }
 
-    public override void AddArrowToMovingBlock()
+    public void AddArrowToMovingBlock()
     {
-        if ((CollisionMouseWith("MovingBlock")) && (CollisionMouseWith("MovingBlock").GetComponent<MovingBlockScript>().playObj.GetComponent<PlayPauseScript>().status == "Play")) //AllObjectList.Instance.playPauseScript.status == "Play") // || (canCreateArrowAtClick == true)
+
+        if ((collisionEventsComponent.CollisionWithTag("MovingBlock") && (collisionEventsComponent.CollisionWithTag("MovingBlock").GetComponent<MovingBlockScript>().playPauseStatus == "Play"))) //AllObjectList.Instance.playPauseScript.status == "Play") // || (canCreateArrowAtClick == true)
             {
-                CollisionMouseWith("MovingBlock").GetComponent<MovingBlockScript>().AddArrow(selectArrow);
+                if (collisionEventsComponent.CollisionWithObj("MovingBlockBlue(Clone)") && !AllGlobalVariable.Instance.HeroBlueStartedWalking)
+                {
+                    collisionEventsComponent.CollisionWithTag("MovingBlock").GetComponent<MovingBlockScript>().AddArrow(SelectedCommand);
+                    AllObjectList.Instance.createArrow.DeleteCommandFromCommandStorage(SelectedCommand);
+                }
+                else
+                if (collisionEventsComponent.CollisionWithObj("MovingBlockRed(Clone)") && !AllGlobalVariable.Instance.HeroRedStartedWalking)
+                {
+                    collisionEventsComponent.CollisionWithTag("MovingBlock").GetComponent<MovingBlockScript>().AddArrow(SelectedCommand);
+                    AllObjectList.Instance.createArrow.DeleteCommandFromCommandStorage(SelectedCommand);
+                }
+                else
+                {
+                    AllObjectList.Instance.stopScript.Shake();
+                }
             }
             
         Destroy(prefabObject);
-        selectArrow = null;
+        SelectedCommand = null;
+    } 
+    void ChangeCanDeleteStatus()
+    {
+        canDelete = false;
     }
-
     void OnDestroy()
     {
-        Destroy(notification);
-    }
+        var parent = GetComponent<JumpBlockInitialization>()?.IdArrowFinish?.transform.parent;
 
-    void CanCreateArrowAtClick()
-    {
-        canCreateArrowAtClick = false;
+        Destroy(Notification);
     }
 }

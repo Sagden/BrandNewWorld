@@ -8,12 +8,11 @@ public class GameAreaScrolling : MonoBehaviour
     private bool banOnScroll = false;
     private Vector3 startMouseCoordinate;
     private Vector3 startCameraCoordinate;
-
     [SerializeField] private Vector3 differentMouseCoordinate;
 
     void Start()
     {
-        AllEventList.Instance.firstPlayerOnFinishFloor.AddListener(BanOnScroll);
+        AllEventList.Instance.allPlayersOnFinishFloor.AddListener(BanOnScroll);
         gameObject.GetComponent<BehaviorLikeUI>().coordinateRelativeCamera = new Vector3(Camera.main.transform.position.x, Camera.main.transform.position.y+5.9f) - Camera.main.transform.position;
     }
 

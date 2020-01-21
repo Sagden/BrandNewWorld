@@ -4,7 +4,5 @@ using UnityEngine;
 
 public abstract class MovingBlockParent : MonoBehaviour
 {
-
-
-
+    public List<GameObject> allCommands;
 }

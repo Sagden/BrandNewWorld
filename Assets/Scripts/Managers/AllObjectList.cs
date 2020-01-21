@@ -7,20 +7,28 @@ public class AllObjectList : MonoBehaviour
     public static AllObjectList Instance {get; private set;}
 //----------------------- SINGLETONE---------------------------//
     public GameObject actionBlock;
-    public CreateArrow createArrow;
+    public CommandStorage createArrow;
+
+    public GameObject notification;
+    public GameObject notificationObj;
+    public Notifications notificationScript;
+
+    public GameObject playersSolidBlock;
 
     public GameObject slider;
     public SliderScript sliderScript;
     
     public GameObject buttonPlayBlue;
     public GameObject buttonPlayRed;
-    public PlayPauseScript playPauseScript;
 
     public GameObject buttonStop;
     public StopScript stopScript;
 
-    public GameObject firstRobotStartFloor;
-    public GameObject secondRobotStartFloor;
+    public GameObject blueRobotStartFloor;
+    public GameObject redRobotStartFloor;
+
+    public GameObject blueRobotFinishFloor;
+    public GameObject redRobotFinishFloor;
 
     public GameObject finishLevelUI;
 
@@ -40,6 +48,8 @@ public class AllObjectList : MonoBehaviour
 
     public Sprite playButtonSprite;
     public Sprite pauseButtonSprite;
+
+    public GameObject checkMark;
     
 
     void Awake()
@@ -48,7 +58,6 @@ public class AllObjectList : MonoBehaviour
         {
             Instance = this;
         }
-
         Application.targetFrameRate = 60;
 
         //Объявление объектов
@@ -62,13 +71,16 @@ public class AllObjectList : MonoBehaviour
         behavior = GameObject.Find("Behavior");
         movingBlockBlue = GameObject.Find("MovingBlockBlue");
         movingBlockRed = GameObject.Find("MovingBlockRed");
-        firstRobotStartFloor = GameObject.Find("FirstRobotStartFloor");
-        secondRobotStartFloor = GameObject.Find("SecondRobotStartFloor");
+        blueRobotStartFloor = GameObject.Find("BlueRobotStartFloor");
+        redRobotStartFloor = GameObject.Find("RedRobotStartFloor");
+        blueRobotFinishFloor = GameObject.Find("BlueRobotFinishFloor");
+        redRobotFinishFloor = GameObject.Find("RedRobotFinishFloor");
     
 
 
         // Объявление скриптов
-        createArrow = actionBlock.GetComponent<CreateArrow>();
+        notificationScript = notification.GetComponent<Notifications>();
+        createArrow = actionBlock.GetComponent<CommandStorage>();
         sliderScript = slider.GetComponent<SliderScript>();
         gameAreaScrolling = playArea.GetComponent<GameAreaScrolling>();
         stopScript = buttonStop.GetComponent<StopScript>();

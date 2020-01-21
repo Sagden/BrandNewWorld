@@ -6,7 +6,7 @@ public class FinishLevelWindow : MonoBehaviour
 {
     void Start()
     {
-        AllEventList.Instance.firstPlayerOnFinishFloor.AddListener(ShowFinishLevelUI);
+        AllEventList.Instance.allPlayersOnFinishFloor.AddListener(delegate { Invoke("ShowFinishLevelUI", 1); });
         gameObject.SetActive(false);
     }
 
