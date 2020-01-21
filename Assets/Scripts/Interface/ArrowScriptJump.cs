@@ -33,9 +33,9 @@ public class ArrowScriptJump : ActionBlockAbstract
 
     void OnMouseDown()
     {
-        if (!banOnArrowDrag && !IamInMovingBlock)
+        if (!banOnTakingCommandBlock && !IamInMovingBlock)
         {
-            SelectArrow = gameObject;
+            SelectedCommand = gameObject;
             prefabObject = Instantiate(arrowPrefab, new Vector3(0,0,-1), transform.rotation);
             prefabObject.GetComponent<SpriteRenderer>().sprite = prefabObject.GetComponent<ArrowPrefab>().arrowJumpSprite;
             thisArrowSelect.AddListener(AddArrowToMovingBlock);
@@ -65,12 +65,12 @@ public class ArrowScriptJump : ActionBlockAbstract
     public void AddArrowToMovingBlock()
     {
 
-        if ((collisionEvents.CollisionWithTag("MovingBlock") && (collisionEvents.CollisionWithTag("MovingBlock").GetComponent<MovingBlockScript>().playPauseStatus == "Play"))) //AllObjectList.Instance.playPauseScript.status == "Play") // || (canCreateArrowAtClick == true)
+        if ((collisionEventsComponent.CollisionWithTag("MovingBlock") && (collisionEventsComponent.CollisionWithTag("MovingBlock").GetComponent<MovingBlockScript>().playPauseStatus == "Play"))) //AllObjectList.Instance.playPauseScript.status == "Play") // || (canCreateArrowAtClick == true)
             {
                 if (!AllGlobalVariable.Instance.HeroBlueStartedWalking)
                 {
-                    collisionEvents.CollisionWithTag("MovingBlock").GetComponent<MovingBlockScript>().AddArrow(SelectArrow);
-                    AllObjectList.Instance.createArrow.ArrowBlockCountChangedMinus(SelectArrow);
+                    collisionEventsComponent.CollisionWithTag("MovingBlock").GetComponent<MovingBlockScript>().AddArrow(SelectedCommand);
+                    AllObjectList.Instance.createArrow.DeleteCommandFromCommandStorage(SelectedCommand);
                     CreateEmptyJumpBlock();
                 }
                 else
@@ -80,14 +80,14 @@ public class ArrowScriptJump : ActionBlockAbstract
             }
             
         Destroy(prefabObject);
-        SelectArrow = null;
+        SelectedCommand = null;
     }
 
     void CreateEmptyJumpBlock()
     {
         if (Type == TypeBlock.Jump)
         {
-            gameObject.GetComponent<CreateJumpBlock>().CreateNewJumpBlock();
+            gameObject.GetComponent<JumpBlockInitialization>().CreateNewJumpBlock();
             GetComponentInParent<MovingBlockScript>().DrawingArrowOnMovingBlock();
         }
     }
@@ -101,8 +101,8 @@ public class ArrowScriptJump : ActionBlockAbstract
 
         if (IamInMovingBlock)
         {
-            Destroy(GetComponent<CreateJumpBlock>()?.IdArrow);
-            GetComponentInParent<MovingBlockScript>()?.DeleteArrow(GetComponent<CreateJumpBlock>()?.IdArrowFinish);
+            Destroy(GetComponent<JumpBlockInitialization>()?.IdArrow);
+            GetComponentInParent<MovingBlockScript>()?.DeleteArrow(GetComponent<JumpBlockInitialization>()?.IdArrowFinish);
         }
     }
 }

@@ -11,45 +11,40 @@ public enum TypeBlock
 
 public abstract class ActionBlockAbstract : MonoBehaviour
 {
-    private bool iamInMovingBlock = false;
     protected bool canDelete = true;
-    private static GameObject selectArrow = null;
+    protected CollisionEvents collisionEventsComponent;
 
-    protected CollisionEvents collisionEvents;
-
-    public static bool banOnArrowDrag = false;
+    public static bool banOnTakingCommandBlock = false;
     public bool showStatus = true;
-    private GameObject notification;
-    protected TypeBlock typeParent;
     public static GameObject prefabObject;
 
-    public static GameObject SelectArrow { get => selectArrow; set => selectArrow = value; }
-    public GameObject Notification { get => notification; set => notification = value; }
-    public bool IamInMovingBlock { get => iamInMovingBlock; set => iamInMovingBlock = value; }
-    public TypeBlock TypeParent { get => typeParent; set => typeParent = value; }
+    public static GameObject SelectedCommand { get; set; } = null;
+    public GameObject Notification { get; set; }
+    public bool IamInMovingBlock { get; set; }
+    public TypeBlock TypeParent { get; set; }
 
     void Start()
     {
-        collisionEvents = GetComponent<CollisionEvents>();
-        banOnArrowDrag = false;
+        collisionEventsComponent = GetComponent<CollisionEvents>();
+        banOnTakingCommandBlock = false;
 
-        AllEventList.Instance.allPlayersOnFinishFloor.AddListener(BanOnArrowDrag);
+        AllEventList.Instance.allPlayersOnFinishFloor.AddListener(BanOnTakingCommandBlock);
     }
  
-    void BanOnArrowDrag()
+    void BanOnTakingCommandBlock()
     {
-        banOnArrowDrag = true;
+        banOnTakingCommandBlock = true;
     }
     
     public virtual void DeleteArrow()
     {
-        if (iamInMovingBlock && !collisionEvents.CollisionWithTag("ButtonPlay"))
+        if (IamInMovingBlock && !collisionEventsComponent.CollisionWithTag("ButtonPlay"))
         {
             if (!MyHeroIsStarted())
                 if (canDelete)
                 {
-                    collisionEvents.CollisionWithTag("MovingBlock").GetComponent<MovingBlockScript>().DeleteArrow(gameObject);
-                    AllObjectList.Instance.createArrow.ArrowBlockCountChangedPlus(gameObject);
+                    collisionEventsComponent.CollisionWithTag("MovingBlock").GetComponent<MovingBlockScript>().DeleteArrow(gameObject);
+                    AllObjectList.Instance.createArrow.AddCommandToCommandStorage(gameObject);
                 }
             canDelete = true;
         }

@@ -41,16 +41,20 @@ public class MovingBlockScript : MovingBlockParent
 
     public void DrawingArrowOnMovingBlock()
     {
+        var offset = 0.5f;
+
         for(int i = 0; i < allCommands.Count; i++)
         {
-            var offset = i * 0.7f;
             
-            allCommands[i].transform.position = new Vector3(transform.position.x-2+offset, Camera.main.transform.position.y+myOffset, -1);
+            var leftBorder = Camera.main.ViewportToWorldPoint(new Vector2(0,0));
+            
+            allCommands[i].transform.position = new Vector3(leftBorder.x+offset, Camera.main.transform.position.y+myOffset, -1);
             allCommands[i].transform.SetParent(gameObject.transform);
             if (allCommands[i].GetComponent<ActionBlockAbstract>()?.IamInMovingBlock == false)
             {
                 allCommands[i].GetComponent<ActionBlockAbstract>().IamInMovingBlock = true;
             }
+            offset += 0.7f;
         }
     }
 }

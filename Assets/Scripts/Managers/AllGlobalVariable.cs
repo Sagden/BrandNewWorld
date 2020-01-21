@@ -35,8 +35,8 @@ public class AllGlobalVariable : MonoBehaviour
         AllEventList.Instance.startMovingEventBlue.AddListener(delegate {HeroBlueStartedWalking = true;});
         AllEventList.Instance.startMovingEventRed.AddListener(delegate {HeroRedStartedWalking = true;});
 
-        AllEventList.Instance.stopButtonClick.AddListener(delegate {HeroBlueStartedWalking = false;});
-        AllEventList.Instance.stopButtonClick.AddListener(delegate {HeroRedStartedWalking = false;});
+        AllEventList.Instance.stopButtonClick.AddListener(delegate {HeroBlueStartedWalking = false; bluePlayerOnFinishFloor = false;});
+        AllEventList.Instance.stopButtonClick.AddListener(delegate {HeroRedStartedWalking = false; bluePlayerOnFinishFloor = false;});
     }
 
     void Update()

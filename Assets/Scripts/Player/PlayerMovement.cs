@@ -27,7 +27,6 @@ public class PlayerMovement : Player
             FinishPlayerMovement.Invoke();
         }
     }
-
     public void Step() //Сделать шаг
     {
         var direction = CurrentCommand.GetComponent<ArrowScript>().Dir;
@@ -49,7 +48,7 @@ public class PlayerMovement : Player
     } 
     public void JumpToCommand(GameObject obj)
     {
-        CurrentStep = MyMovingBlockScript.allCommands.IndexOf(obj.GetComponent<CreateJumpBlock>().IdArrowFinish);
+        CurrentStep = MyMovingBlockScript.allCommands.IndexOf(obj.GetComponent<JumpBlockInitialization>().IdArrowFinish);
         StartMovement();
     }
     void EmptyCommand()
@@ -78,7 +77,6 @@ public class PlayerMovement : Player
             }
         }
     }
-
     void OnDestroy()
     {
         Destroy(myPlayersSolidBlock);

@@ -32,7 +32,7 @@ public class PlayPauseRed : MonoBehaviour
 
     void ClickOnButton()
     {
-        if (status == "Play" && !AllObjectList.Instance.bluePlayerObj.GetComponent<PlayerMovementAnimation>().AnimationComponent.isPlaying)
+        if (status == "Play" && !AllObjectList.Instance.redPlayerObj.GetComponent<PlayerMovementAnimation>().AnimationComponent.isPlaying)
         {
             status = "Pause";
             gameObject.GetComponent<Image>().sprite = AllObjectList.Instance.pauseButtonSprite;

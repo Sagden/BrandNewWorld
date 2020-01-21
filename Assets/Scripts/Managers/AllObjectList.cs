@@ -7,7 +7,7 @@ public class AllObjectList : MonoBehaviour
     public static AllObjectList Instance {get; private set;}
 //----------------------- SINGLETONE---------------------------//
     public GameObject actionBlock;
-    public CreateArrow createArrow;
+    public CommandStorage createArrow;
 
     public GameObject notification;
     public GameObject notificationObj;
@@ -80,7 +80,7 @@ public class AllObjectList : MonoBehaviour
 
         // Объявление скриптов
         notificationScript = notification.GetComponent<Notifications>();
-        createArrow = actionBlock.GetComponent<CreateArrow>();
+        createArrow = actionBlock.GetComponent<CommandStorage>();
         sliderScript = slider.GetComponent<SliderScript>();
         gameAreaScrolling = playArea.GetComponent<GameAreaScrolling>();
         stopScript = buttonStop.GetComponent<StopScript>();

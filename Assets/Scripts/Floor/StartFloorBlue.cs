@@ -8,7 +8,7 @@ public class StartFloorBlue : StartFloorParent
     public GameObject player;
     public GameObject playerParent;
 
-    void OnEnable()
+    void Awake()
     {
         CreateBluePlayer();
         

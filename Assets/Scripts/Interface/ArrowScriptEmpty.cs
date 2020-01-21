@@ -7,13 +7,12 @@ using UnityEngine.Events;
 public class ArrowScriptEmpty : ActionBlockAbstract
 {
     private UnityEvent thisArrowSelect = new UnityEvent();
-    private AnimationClip animClip;
     [SerializeField] private GameObject arrowPrefab;
     [SerializeField] protected TypeBlock type;
 
     [SerializeField] private Vector3 dir;
 
-    public AnimationClip AnimClip { get => animClip; set => animClip = value; }
+    public AnimationClip AnimationClipComponent { get; set; }
     public Vector3 Dir { get => dir; set => dir = value; }
     internal TypeBlock Type { get => type; set => type = value; }
 
@@ -26,7 +25,7 @@ public class ArrowScriptEmpty : ActionBlockAbstract
         TypeParent = type;
         
         //if (gameObject.GetComponent<Animation>() != null)
-            AnimClip = gameObject.GetComponent<Animation>()?.clip;
+            AnimationClipComponent = gameObject.GetComponent<Animation>()?.clip;
     }
 
     void OnMouseDown()
@@ -45,7 +44,7 @@ public class ArrowScriptEmpty : ActionBlockAbstract
         var list = GetComponentInParent<MovingBlockScript>().allCommands;
         var mouseCoordinate = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        if (collisionEvents.CollisionWithObj(gameObject.transform.parent.gameObject))
+        if (collisionEventsComponent.CollisionWithObj(gameObject.transform.parent.gameObject))
             foreach (GameObject obj in list)
             {
                 var i = list.IndexOf(obj);

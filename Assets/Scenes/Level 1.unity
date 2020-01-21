@@ -2469,6 +2469,26 @@ PrefabInstance:
       propertyPath: arrowList.Array.data[1].commandNumber
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3462824495751545251, guid: b790cde529c8f054ba9c3242bb4a615a,
+        type: 3}
+      propertyPath: commandStorageList.Array.data[0].commandNumber
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3462824495751545251, guid: b790cde529c8f054ba9c3242bb4a615a,
+        type: 3}
+      propertyPath: commandStorageList.Array.data[1].commandNumber
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3462824495751545251, guid: b790cde529c8f054ba9c3242bb4a615a,
+        type: 3}
+      propertyPath: commandStorageList.Array.data[2].commandNumber
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3462824495751545251, guid: b790cde529c8f054ba9c3242bb4a615a,
+        type: 3}
+      propertyPath: commandStorageList.Array.data[4].commandNumber
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b790cde529c8f054ba9c3242bb4a615a, type: 3}
 --- !u!1001 &6763592266566986038

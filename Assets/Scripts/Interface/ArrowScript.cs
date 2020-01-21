@@ -33,9 +33,9 @@ public class ArrowScript : ActionBlockAbstract
 
     void OnMouseDown()
     {
-        if (!banOnArrowDrag && !IamInMovingBlock)
+        if (!banOnTakingCommandBlock && !IamInMovingBlock)
         {
-            SelectArrow = gameObject;
+            SelectedCommand = gameObject;
             prefabObject = Instantiate(arrowPrefab, new Vector3(0,0,-1), transform.rotation);
             thisArrowSelect.AddListener(AddArrowToMovingBlock);
         }
@@ -64,12 +64,18 @@ public class ArrowScript : ActionBlockAbstract
     public void AddArrowToMovingBlock()
     {
 
-        if ((collisionEvents.CollisionWithTag("MovingBlock") && (collisionEvents.CollisionWithTag("MovingBlock").GetComponent<MovingBlockScript>().playPauseStatus == "Play"))) //AllObjectList.Instance.playPauseScript.status == "Play") // || (canCreateArrowAtClick == true)
+        if ((collisionEventsComponent.CollisionWithTag("MovingBlock") && (collisionEventsComponent.CollisionWithTag("MovingBlock").GetComponent<MovingBlockScript>().playPauseStatus == "Play"))) //AllObjectList.Instance.playPauseScript.status == "Play") // || (canCreateArrowAtClick == true)
             {
-                if (!AllGlobalVariable.Instance.HeroBlueStartedWalking)
+                if (collisionEventsComponent.CollisionWithObj("MovingBlockBlue(Clone)") && !AllGlobalVariable.Instance.HeroBlueStartedWalking)
                 {
-                    collisionEvents.CollisionWithTag("MovingBlock").GetComponent<MovingBlockScript>().AddArrow(SelectArrow);
-                    AllObjectList.Instance.createArrow.ArrowBlockCountChangedMinus(SelectArrow);
+                    collisionEventsComponent.CollisionWithTag("MovingBlock").GetComponent<MovingBlockScript>().AddArrow(SelectedCommand);
+                    AllObjectList.Instance.createArrow.DeleteCommandFromCommandStorage(SelectedCommand);
+                }
+                else
+                if (collisionEventsComponent.CollisionWithObj("MovingBlockRed(Clone)") && !AllGlobalVariable.Instance.HeroRedStartedWalking)
+                {
+                    collisionEventsComponent.CollisionWithTag("MovingBlock").GetComponent<MovingBlockScript>().AddArrow(SelectedCommand);
+                    AllObjectList.Instance.createArrow.DeleteCommandFromCommandStorage(SelectedCommand);
                 }
                 else
                 {
@@ -78,7 +84,7 @@ public class ArrowScript : ActionBlockAbstract
             }
             
         Destroy(prefabObject);
-        SelectArrow = null;
+        SelectedCommand = null;
     } 
     void ChangeCanDeleteStatus()
     {
@@ -86,7 +92,7 @@ public class ArrowScript : ActionBlockAbstract
     }
     void OnDestroy()
     {
-        var parent = GetComponent<CreateJumpBlock>()?.IdArrowFinish?.transform.parent;
+        var parent = GetComponent<JumpBlockInitialization>()?.IdArrowFinish?.transform.parent;
 
         Destroy(Notification);
     }
